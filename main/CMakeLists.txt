@@ -16,6 +16,7 @@ idf_component_register(
         "audio/audio.c"
         "wifi/wifi.cc"
         "webserver/webserver.c"
+        "settings/settings.c"
     INCLUDE_DIRS 
         "."
         "common"
@@ -25,6 +26,7 @@ idf_component_register(
         "audio"
         "wifi"
         "webserver"
+        "settings"
     REQUIRES 
         as608 
         nvs_flash 

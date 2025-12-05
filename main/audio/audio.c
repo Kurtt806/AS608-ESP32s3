@@ -9,6 +9,7 @@
 #include "audio.h"
 #include "audio_events.h"
 #include "../common/config.h"
+#include "../settings/settings.h"
 
 #include "esp_log.h"
 #include "driver/i2s_std.h"
@@ -67,8 +68,7 @@ typedef struct {
 
 /* Sound mapping table */
 static const sound_data_t SOUND_MAP[SOUND_MAX] = {
-    [SOUND_BOOT] = SOUND_DATA(boot),
-    [SOUND_READY] = SOUND_EMPTY,           /* Reuse boot sound */
+    [SOUND_READY] = SOUND_DATA(boot),            /* Reuse boot sound */
     [SOUND_BEEP] = SOUND_EMPTY,            /* Use fallback tone */
     [SOUND_FINGER_DETECTED] = SOUND_EMPTY, /* Use fallback tone */
     [SOUND_MATCH_OK] = SOUND_DATA(match_ok),
@@ -89,7 +89,6 @@ typedef struct {
     uint16_t duration_ms;
 } tone_t;
 
-static const tone_t FALLBACK_BOOT[]       = {{880, 100}, {1760, 150}, {0, 0}};
 static const tone_t FALLBACK_READY[]      = {{1000, 80}, {0, 0}};
 static const tone_t FALLBACK_BEEP[]       = {{1500, 50}, {0, 0}};
 static const tone_t FALLBACK_FINGER[]     = {{1200, 30}, {0, 0}};
@@ -103,7 +102,6 @@ static const tone_t FALLBACK_DELETE[]     = {{1500, 50}, {1200, 50}, {900, 100},
 static const tone_t FALLBACK_ERROR[]      = {{200, 300}, {0, 0}};
 
 static const tone_t* FALLBACK_MAP[SOUND_MAX] = {
-    [SOUND_BOOT]            = FALLBACK_BOOT,
     [SOUND_READY]           = FALLBACK_READY,
     [SOUND_BEEP]            = FALLBACK_BEEP,
     [SOUND_FINGER_DETECTED] = FALLBACK_FINGER,
@@ -357,6 +355,9 @@ esp_err_t audio_init(void) {
     
     ESP_LOGI(TAG, "Initializing...");
     
+    /* Load volume from settings FIRST before any playback */
+    audio_load_settings();
+    
     /* Init I2S */
     esp_err_t ret = i2s_init();
     if (ret != ESP_OK) return ret;
@@ -440,9 +441,16 @@ void audio_stop(void) {
 
 void audio_set_volume(uint8_t volume) {
     s_volume = (volume > 100) ? 100 : volume;
+    /* Sync to settings */
+    settings_set_volume(s_volume);
     ESP_LOGI(TAG, "Volume: %d%%", s_volume);
 }
 
 uint8_t audio_get_volume(void) {
     return s_volume;
+}
+
+void audio_load_settings(void) {
+    s_volume = settings_get_volume();
+    ESP_LOGI(TAG, "Loaded volume from settings: %d%%", s_volume);
 }

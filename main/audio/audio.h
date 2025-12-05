@@ -16,19 +16,19 @@ extern "C" {
 /* ============================================================================
  * Sound Types
  * ============================================================================ */
-typedef enum {
-    SOUND_BOOT = 0,         /**< System boot */
-    SOUND_READY,            /**< Ready/idle */
-    SOUND_BEEP,             /**< Simple beep */
-    SOUND_FINGER_DETECTED,  /**< Finger placed */
-    SOUND_MATCH_OK,         /**< Fingerprint matched */
-    SOUND_MATCH_FAIL,       /**< No match */
-    SOUND_ENROLL_START,     /**< Enrollment started */
-    SOUND_ENROLL_STEP,      /**< Enrollment step OK */
-    SOUND_ENROLL_OK,        /**< Enrollment success */
-    SOUND_ENROLL_FAIL,      /**< Enrollment failed */
-    SOUND_DELETE_OK,        /**< Delete success */
-    SOUND_ERROR,            /**< Error */
+typedef enum
+{
+    SOUND_READY = 0,       /**< System ready */
+    SOUND_BEEP,            /**< Simple beep */
+    SOUND_FINGER_DETECTED, /**< Finger placed */
+    SOUND_MATCH_OK,        /**< Fingerprint matched */
+    SOUND_MATCH_FAIL,      /**< No match */
+    SOUND_ENROLL_START,    /**< Enrollment started */
+    SOUND_ENROLL_STEP,     /**< Enrollment step OK */
+    SOUND_ENROLL_OK,       /**< Enrollment success */
+    SOUND_ENROLL_FAIL,     /**< Enrollment failed */
+    SOUND_DELETE_OK,       /**< Delete success */
+    SOUND_ERROR,           /**< Error */
     SOUND_MAX
 } sound_type_t;
 
@@ -74,6 +74,12 @@ void audio_set_volume(uint8_t volume);
  * @brief Get current volume (0-100)
  */
 uint8_t audio_get_volume(void);
+
+/**
+ * @brief Load volume from settings module
+ * @note Call after settings_init()
+ */
+void audio_load_settings(void);
 
 #ifdef __cplusplus
 }

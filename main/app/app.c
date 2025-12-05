@@ -6,6 +6,7 @@
 #include "app.h"
 #include "app_events.h"
 #include "../common/config.h"
+#include "../settings/settings.h"
 #include "../finger/finger.h"
 #include "../finger/finger_events.h"
 #include "../button/button.h"
@@ -301,10 +302,6 @@ esp_err_t app_init(void)
 void app_start(void)
 {
     ESP_LOGI(TAG, "Starting...");
-
-    /* Play boot sound */
-    audio_set_volume(CFG_AUDIO_DEFAULT_VOLUME);
-    audio_play(SOUND_BOOT);
 
     /* Start WiFi */
     wifi_module_start();

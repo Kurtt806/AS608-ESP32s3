@@ -49,7 +49,7 @@
 #define CFG_AUDIO_TASK_STACK        16384
 #define CFG_AUDIO_TASK_PRIORITY     3
 #define CFG_AUDIO_QUEUE_SIZE        8
-#define CFG_AUDIO_DEFAULT_VOLUME    50
+#define CFG_AUDIO_DEFAULT_VOLUME    10
 #define CFG_AUDIO_SAMPLE_RATE       44100
 
 /* ============================================================================

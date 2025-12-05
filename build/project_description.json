@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "AS608-ESP32s3",
-    "project_version":    "1",
+    "project_version":    "5b1a0ba-dirty",
     "project_path":       "D:/ESP-IDF/AS608-ESP32s3",
     "idf_path":           "C:/esp/v5.5.1/esp-idf",
     "build_dir":          "D:/ESP-IDF/AS608-ESP32s3/build",
@@ -70,8 +70,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/as608/libas608.a",
-            "sources": [ "D:/ESP-IDF/AS608-ESP32s3/components/as608/as608.c" ],
-            "include_dirs": [ "include" ]
+            "sources": [ "D:/ESP-IDF/AS608-ESP32s3/components/as608/as608.c", "D:/ESP-IDF/AS608-ESP32s3/components/as608/as608_protocol.c" ],
+            "include_dirs": [ "." ]
         },
         "bootloader": {
             "alias": "idf::bootloader",
@@ -1315,8 +1315,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "chmorgan__esp-libhelix-mp3", "espressif__button", "espressif__led_strip" ],
             "file": "D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/main/libmain.a",
-            "sources": [ "D:/ESP-IDF/AS608-ESP32s3/main/main.c", "D:/ESP-IDF/AS608-ESP32s3/main/app/app.c", "D:/ESP-IDF/AS608-ESP32s3/main/finger/finger.c", "D:/ESP-IDF/AS608-ESP32s3/main/button/button.c", "D:/ESP-IDF/AS608-ESP32s3/main/audio/audio.c", "D:/ESP-IDF/AS608-ESP32s3/main/wifi/wifi.cc", "D:/ESP-IDF/AS608-ESP32s3/main/webserver/webserver.c", "D:/ESP-IDF/AS608-ESP32s3/build/boot.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/delete_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_start.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_step.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/match_fail.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/match_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/index.html.S", "D:/ESP-IDF/AS608-ESP32s3/build/style.css.S", "D:/ESP-IDF/AS608-ESP32s3/build/app.js.S" ],
-            "include_dirs": [ ".", "common", "app", "finger", "button", "audio", "wifi", "webserver" ]
+            "sources": [ "D:/ESP-IDF/AS608-ESP32s3/main/main.c", "D:/ESP-IDF/AS608-ESP32s3/main/app/app.c", "D:/ESP-IDF/AS608-ESP32s3/main/finger/finger.c", "D:/ESP-IDF/AS608-ESP32s3/main/button/button.c", "D:/ESP-IDF/AS608-ESP32s3/main/audio/audio.c", "D:/ESP-IDF/AS608-ESP32s3/main/wifi/wifi.cc", "D:/ESP-IDF/AS608-ESP32s3/main/webserver/webserver.c", "D:/ESP-IDF/AS608-ESP32s3/main/settings/settings.c", "D:/ESP-IDF/AS608-ESP32s3/build/boot.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/delete_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_start.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/enroll_step.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/match_fail.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/match_ok.mp3.S", "D:/ESP-IDF/AS608-ESP32s3/build/index.html.S", "D:/ESP-IDF/AS608-ESP32s3/build/style.css.S", "D:/ESP-IDF/AS608-ESP32s3/build/app.js.S" ],
+            "include_dirs": [ ".", "common", "app", "finger", "button", "audio", "wifi", "webserver", "settings" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -3016,7 +3016,7 @@
             "priv_reqs": [ "chmorgan__esp-libhelix-mp3", "espressif__button", "espressif__led_strip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "chmorgan__esp-libhelix-mp3", "espressif__button", "espressif__led_strip" ],
-            "include_dirs": [ ".", "common", "app", "finger", "button", "audio", "wifi", "webserver" ]
+            "include_dirs": [ ".", "common", "app", "finger", "button", "audio", "wifi", "webserver", "settings" ]
         },
         "as608": {
             "alias": "idf::as608",
@@ -3028,7 +3028,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include" ]
+            "include_dirs": [ "." ]
         },
         "khoa_esp_wifi": {
             "alias": "idf::khoa_esp_wifi",
