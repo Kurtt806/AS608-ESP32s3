@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS608 Fingerprint Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <h1>AS608 <span>Fingerprint</span></h1>
+            <div class="status-bar">
+                <span id="wifi-status" class="status-pill">
+                    <span class="status-dot"></span>
+                    WiFi
+                </span>
+                <span id="sensor-status" class="status-pill">
+                    <span class="status-dot"></span>
+                    Sensor
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Status Overview -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Device Status</h2>
+                <span id="state-badge" class="badge idle">IDLE</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="finger-count">0</span>
+                    <span class="stat-label">Enrolled</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="library-size">162</span>
+                    <span class="stat-label">Capacity</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+            <h2>Quick Actions</h2>
+            <div class="action-grid">
+                <button class="action-btn primary" id="btn-enroll" onclick="startEnroll()">
+                    <span class="action-label">Enroll New</span>
+                </button>
+                <button class="action-btn" id="btn-search" onclick="startSearch()">
+                    <span class="action-label">Scan Finger</span>
+                </button>
+                <button class="action-btn warning" id="btn-cancel" onclick="cancelAction()" disabled>
+                    <span class="action-label">Cancel</span>
+                </button>
+                <button class="action-btn danger" id="btn-delete-all" onclick="deleteAll()">
+                    <span class="action-label">Clear All</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Fingerprint Database -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Fingerprint Database</h2>
+                <button class="btn" onclick="refreshList()">Refresh</button>
+            </div>
+            <ul class="finger-list" id="finger-list">
+                <li class="empty-state">No fingerprints enrolled yet</li>
+            </ul>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Activity Log</h2>
+                <button class="btn" onclick="clearLog()">Clear</button>
+            </div>
+            <div class="event-log" id="event-log">
+                <div class="event-item">
+                    <span class="event-dot"></span>
+                    <span>System ready</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="card">
+            <h2>Settings</h2>
+            <div class="setting-item">
+                <label for="volume">Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="50" onchange="setVolume(this.value)" oninput="updateRangeBackground(this)">
+                <span id="volume-val">50%</span>
+            </div>
+            <div class="setting-item">
+                <label for="auto-search">Auto Search</label>
+                <label class="switch">
+                    <input type="checkbox" id="auto-search" checked onchange="setAutoSearch(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Confirmation Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modal-title">Confirm Action</h3>
+            <p class="modal-message" id="modal-message">Are you sure you want to proceed?</p>
+            <div class="modal-actions">
+                <button class="btn" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // Update range slider background on input
+        function updateRangeBackground(input) {
+            const value = (input.value - input.min) / (input.max - input.min) * 100;
+            input.style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${value}%, var(--color-border) ${value}%, var(--color-border) 100%)`;
+        }
+        
+        // Initialize range backgrounds on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const rangeInputs = document.querySelectorAll('input[type="range"]');
+            rangeInputs.forEach(input => updateRangeBackground(input));
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

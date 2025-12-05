@@ -1,0 +1,56 @@
+dependencies:
+  chmorgan/esp-libhelix-mp3:
+    component_hash: ca99ff0f06ee32bfa1eceec476e40345ddc13fad82f6b6221a4b4a6bbcb9a42f
+    dependencies:
+    - name: idf
+      version: '>=4.1.0'
+    source:
+      git: https://github.com/chmorgan/esp-libhelix-mp3.git
+      path: .
+      type: git
+    version: 585d7a6b40b5765f67cce47218639ff682c075e5
+  espressif/button:
+    component_hash: 30a3f495c3862d505ce6e41adbbd218b2750e9723ab2151feff00e9fe685b326
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: 0.*
+    - name: idf
+      require: private
+      version: '>=4.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 3.5.0
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 0.5.3
+  espressif/led_strip:
+    component_hash: f0d1b7f93eb3ee57bcfd220656176b0b5616e1947f89ed44364555cf910c4840
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 3.0.2
+  idf:
+    source:
+      type: idf
+    version: 5.5.1
+direct_dependencies:
+- chmorgan/esp-libhelix-mp3
+- espressif/button
+- espressif/led_strip
+manifest_hash: e351b449f6529ace6577911e91f0373d18fbf0ac6b9c0911cc09f445bed63724
+target: esp32s3
+version: 2.0.0

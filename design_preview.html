@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS608 Fingerprint Control - Design Preview</title>
+    <link rel="stylesheet" href="main/webserver/assets/style.css">
+    <style>
+        /* Demo specific styles */
+        .demo-notice {
+            background: #FFF3CD;
+            border: 1px solid #FFEAA7;
+            color: #856404;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .demo-sidebar {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .demo-sidebar h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .demo-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .demo-sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .demo-sidebar li:last-child {
+            border-bottom: none;
+        }
+
+        .typography-demo {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .typography-demo h4 {
+            margin-bottom: 16px;
+            color: var(--accent-color);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .typography-demo p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .sample-text {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="demo-notice">
+            🎨 Design Preview - AS608 Fingerprint Control Panel
+        </div>
+
+        <div class="demo-grid">
+            <div>
+                <!-- Typography Demo -->
+                <div class="typography-demo">
+                    <h4>Typography Scale</h4>
+                    <div class="sample-text">
+                        <h1 style="font-size: var(--font-size-5xl); font-weight: var(--font-weight-bold); margin: 0 0 8px 0;">AS608 Control Panel</h1>
+                        <h2 style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); margin: 0 0 8px 0;">Fingerprint Management</h2>
+                        <h3 style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-semibold); margin: 0 0 8px 0;">Device Status</h3>
+                        <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); margin: 0 0 8px 0;">System ready for fingerprint operations</p>
+                        <p style="font-size: var(--font-size-base); font-weight: var(--font-weight-regular); margin: 0;">Manage your fingerprint database with ease using our intuitive web interface.</p>
+                    </div>
+                </div>
+
+                <!-- Include the actual interface -->
+                <div id="main-interface">
+                    <!-- This would be loaded from index.html -->
+                </div>
+            </div>
+
+            <div class="demo-sidebar">
+                <h3>Typography Features</h3>
+                <ul>
+                    <li>✓ SF Pro Display font stack</li>
+                    <li>✓ Optimized font smoothing</li>
+                    <li>✓ Consistent scale system</li>
+                    <li>✓ Proper letter spacing</li>
+                    <li>✓ Optimized line heights</li>
+                    <li>✓ Font feature settings</li>
+                    <li>✓ Custom selection colors</li>
+                    <li>✓ Focus visible outlines</li>
+                </ul>
+
+                <h3>Font Weights</h3>
+                <ul>
+                    <li>Regular (400)</li>
+                    <li>Medium (500)</li>
+                    <li>Semibold (600)</li>
+                    <li>Bold (700)</li>
+                </ul>
+
+                <h3>Responsive Scale</h3>
+                <ul>
+                    <li>5xl: 40px (desktop)</li>
+                    <li>4xl: 32px (tablet)</li>
+                    <li>3xl: 28px (mobile)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the actual interface -->
+    <script>
+        fetch('main/webserver/assets/index.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('main-interface').innerHTML = html;
+                // Add demo data
+                setTimeout(() => {
+                    document.getElementById('finger-count').textContent = '42';
+                    document.getElementById('library-size').textContent = '162';
+                    document.getElementById('wifi-status').classList.add('active');
+                    document.getElementById('sensor-status').classList.add('active');
+                    document.getElementById('state-badge').textContent = 'IDLE';
+                    document.getElementById('state-badge').className = 'badge idle';
+                }, 100);
+            })
+            .catch(err => {
+                document.getElementById('main-interface').innerHTML =
+                    '<div class="card"><h2>Preview Unavailable</h2><p>Load the main interface to see the design.</p></div>';
+            });
+    </script>
+</body>
+</html>

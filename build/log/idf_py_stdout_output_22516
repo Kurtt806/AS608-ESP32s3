@@ -1,0 +1,1552 @@
+Command: C:\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\esp\v5.5.1\esp-idf\tools/idf_monitor.py -p COM19 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 D:\ESP-IDF\AS608-ESP32s3\build\AS608-ESP32s3.elf D:\ESP-IDF\AS608-ESP32s3\build\bootloader\bootloader.elf --force-color -m 'C:\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\esp\v5.5.1\esp-idf\tools\idf.py' '-p' 'COM19'
+[0;32mI (169) esp_image: segment 1: paddr=000794cc vaddr=3fc9d400 sizeESP-ROM:esp32s3-20210327[0m
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4200b493
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f34
+entry 0x403c8924
+[0;32mI (24) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Dec  5 2025 12:41:50[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (28) boot: efuse block revision: v1.3[0m
+[0;32mI (32) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (36) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32s3: SPI Flash Size : 4MB[0m
+[0;32mI (43) boot: Enabling RNG early entropy source...[0m
+[0;32mI (48) boot: Partition Table:[0m
+[0;32mI (50) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (63) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (70) boot:  2 factory          factory app      00 00 00010000 002c0000[0m
+[0;32mI (76) boot:  3 storage          Unknown data     01 82 002d0000 00130000[0m
+[0;32mI (83) boot: End of partition table[0m
+[0;32mI (86) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=694a4h (431268) map[0m
+[0;32mI (169) esp_image: segment 1: paddr=000794cc vaddr=3fc9d400 size=050b8h ( 20664) load[0m
+[0;32mI (174) esp_image: segment 2: paddr=0007e58c vaddr=40374000 size=01a8ch (  6796) load[0m
+[0;32mI (176) esp_image: segment 3: paddr=00080020 vaddr=42000020 size=af764h (718692) map[0m
+[0;32mI (307) esp_image: segment 4: paddr=0012f78c vaddr=40375a8c size=17874h ( 96372) load[0m
+[0;32mI (329) esp_image: segment 5: paddr=00147008 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (339) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (339) boot: Disabling RNG early entropy source...[0m
+[0;32mI (349) esp_psram: Found 2MB PSRAM device[0m
+[0;32mI (349) esp_psram: Speed: 40MHz[0m
+[0;32mI (350) cpu_start: Multicore app[0m
+[0;32mI (768) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (777) cpu_start: Pro cpu start user code[0m
+[0;32mI (777) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (778) app_init: Application information:[0m
+[0;32mI (778) app_init: Project name:     AS608-ESP32s3[0m
+[0;32mI (782) app_init: App version:      1[0m
+[0;32mI (785) app_init: Compile time:     Dec  5 2025 12:40:45[0m
+[0;32mI (790) app_init: ELF file SHA256:  d2d51c236...[0m
+[0;32mI (795) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (799) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (803) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (807) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (811) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (817) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (822) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (827) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (832) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (838) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (845) spi_flash: detected chip: generic[0m
+[0;32mI (848) spi_flash: flash io: dio[0m
+[0;32mI (852) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (857) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (864) main_task: Started on CPU0[0m
+[0;32mI (867) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (875) main_task: Calling app_main()[0m
+[0;32mI (878) MAIN: =========================================[0m
+[0;32mI (883) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (887) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (890) MAIN: =========================================[0m
+[0;32mI (917) webserver: Initialized[0m
+[0;32mI (917) APP: Initializing...[0m
+[0;32mI (917) BUTTON: Initializing buttons...[0m
+[0;32mI (918) button: IoT Button Version: 3.5.0[0m
+[0;32mI (919) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (923) BUTTON: Buttons initialized[0m
+[0;32mI (926) AUDIO: Initializing...[0m
+[0;32mI (930) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (934) AUDIO: MP3 decoder initialized[0m
+[0;32mI (937) AUDIO: Task started[0m
+[0;32mI (939) AUDIO: Initialized[0m
+[0;32mI (942) WIFI: Initializing WiFi module...[0m
+[0;32mI (948) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (949) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (953) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (958) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (965) WIFI: WiFi module initialized[0m
+[0;32mI (967) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (974) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1385) AS608: AS608 initialized successfully[0m
+[0;32mI (1790) FINGER: Library=300 Security=3[0m
+[0;32mI (1992) FINGER: Templates=2[0m
+[0;32mI (1992) APP: [FINGER] Ready[0m
+[0;32mI (1992) FINGER: Task started[0m
+[0;32mI (1992) FINGER: Initialized[0m
+[0;32mI (1993) APP: Initialized[0m
+[0;32mI (1994) APP: Starting...[0m
+[0;32mI (1996) AUDIO: Volume: 50%[0m
+[0;32mI (1997) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2005) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2007) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2017) WIFI: Starting WiFi station...[0m
+[0;32mI (2018) pp: pp rom version: e7ae62f[0m
+[0;32mI (2019) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2024) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2030) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2033) wifi:wifi certification version: v7.0[0m
+[0;32mI (2037) wifi:config NVS flash: disabled[0m
+[0;32mI (2041) wifi:config nano formatting: disabled[0m
+[0;32mI (2045) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2050) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2054) wifi:Init management short buffer num: 32[0m
+[0;32mI (2059) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2063) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2067) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2071) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2075) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2079) AUDIO: MP3 playback done[0m
+[0;32mI (2082) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2088) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2091) wifi_init: rx ba win: 6[0m
+[0;32mI (2093) wifi_init: accept mbox: 6[0m
+[0;32mI (2096) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2099) wifi_init: udp mbox: 6[0m
+[0;32mI (2105) wifi_init: tcp mbox: 6[0m
+[0;32mI (2105) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2108) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2111) wifi_init: tcp mss: 1440[0m
+[0;32mI (2114) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2118) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2123) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2163) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (2223) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2224) wifi:enable tsf[0m
+[0;32mI (2227) WIFI: Scanning for networks...[0m
+[0;32mI (2233) APP: State: INIT -> IDLE[0m
+[0;32mI (2233) APP: Started[0m
+[0;32mI (2234) webserver: Starting server on port 80[0m
+[0;32mI (2236) webserver: Server started[0m
+[0;32mI (2236) main_task: Returned from app_main()[0m
+[0;32mI (3377) AUDIO: MP3 playback done[0m
+[0;32mI (4638) WifiStation: Wait for next scan[0m
+[0;32mI (7058) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -34, Channel: 7, Authmode: 3[0m
+[0;32mI (7059) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (7061) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+Guru Meditation Error: Core  0 panic'ed (Interrupt wdt timeout on CPU0). 
+
+Core  0 register dump:
+PC      : 0x40384360  PS      : 0x00060f34  A0      : 0x80376cc5  A1      : 0x3fca9030  
+A2      : 0x3fca2b70  A3      : 0x00000000  A4      : 0x00060120  A5      : 0x00060f23  
+A6      : 0x00000007  A7      : 0x0000cdcd  A8      : 0x00000000  A9      : 0x60000000  
+A10     : 0x60023000  A11     : 0x00000000  A12     : 0xb33fffff  A13     : 0x00060f23  
+A14     : 0xffc00000  A15     : 0x0000cdcd  SAR     : 0x0000000a  EXCCAUSE: 0x00000005  
+EXCVADDR: 0x00000000  LBEG    : 0x40056f5c  LEND    : 0x40056f72  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x4038435d:0x3fca9030 0x40376cc2:0x3fca9050 0x4201deaf:0x3fca9070 0x4201dfc1:0x3fca90a0 0x4037f3e9:0x3fca90c0
+
+
+Core  1 register dump:
+PC      : 0x4037ab4e  PS      : 0x00060134  A0      : 0x820ac1b1  A1      : 0x3fcab2c0  
+A2      : 0x00000000  A3      : 0x00000000  A4      : 0x3fca7f80  A5      : 0x3fca7f60  
+A6      : 0x40375c34  A7      : 0x00000001  A8      : 0x8201cb26  A9      : 0x3fcab280  
+A10     : 0x00000000  A11     : 0x00000001  A12     : 0x8037f769  A13     : 0x3fca7de0  
+A14     : 0x00060023  A15     : 0x3fcab48c  SAR     : 0x00000000  EXCCAUSE: 0x00000005  
+EXCVADDR: 0x00000000  LBEG    : 0x00000000  LEND    : 0x00000000  LCOUNT  : 0x00000000  
+
+
+Backtrace: 0x4037ab4b:0x3fcab2c0 0x420ac1ae:0x3fcab2e0 0x403805a9:0x3fcab300 0x4037f3e9:0x3fcab320
+
+
+
+
+ELF file SHA256: d2d51c236
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037e7ed
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f34
+entry 0x403c8924
+[0;32mI (308) esp_image: segment 4: paddr=0012f78c vaddr=40375a8c sizeI (774) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (783) cpu_start: Pro cpu start user code[0m
+[0;32mI (783) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (784) app_init: Application information:[0m
+[0;32mI (784) app_init: Project name:     AS608-ESP32s3[0m
+[0;32mI (788) app_init: App version:      1[0m
+[0;32mI (791) app_init: Compile time:     Dec  5 2025 12:40:45[0m
+[0;32mI (796) app_init: ELF file SHA256:  d2d51c236...[0m
+[0;32mI (801) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (805) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (809) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (813) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (817) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (823) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (828) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (833) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (838) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (844) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (851) spi_flash: detected chip: generic[0m
+[0;32mI (854) spi_flash: flash io: dio[0m
+[0;32mI (858) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (863) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (870) main_task: Started on CPU0[0m
+[0;32mI (873) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (881) main_task: Calling app_main()[0m
+[0;32mI (884) MAIN: =========================================[0m
+[0;32mI (889) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (893) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (896) MAIN: =========================================[0m
+[0;32mI (923) webserver: Initialized[0m
+[0;32mI (924) APP: Initializing...[0m
+[0;32mI (924) BUTTON: Initializing buttons...[0m
+[0;32mI (924) button: IoT Button Version: 3.5.0[0m
+[0;32mI (926) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (929) BUTTON: Buttons initialized[0m
+[0;32mI (932) AUDIO: Initializing...[0m
+[0;32mI (936) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (941) AUDIO: MP3 decoder initialized[0m
+[0;32mI (943) AUDIO: Task started[0m
+[0;32mI (946) AUDIO: Initialized[0m
+[0;32mI (948) WIFI: Initializing WiFi module...[0m
+[0;32mI (954) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (956) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (960) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (965) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (972) WIFI: WiFi module initialized[0m
+[0;32mI (974) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1391) AS608: AS608 initialized successfully[0m
+[0;32mI (1796) FINGER: Library=300 Security=3[0m
+[0;32mI (1998) FINGER: Templates=2[0m
+[0;32mI (1998) APP: [FINGER] Ready[0m
+[0;32mI (1998) FINGER: Task started[0m
+[0;32mI (1998) FINGER: Initialized[0m
+[0;32mI (1999) APP: Initialized[0m
+[0;32mI (2000) APP: Starting...[0m
+[0;32mI (2002) AUDIO: Volume: 50%[0m
+[0;32mI (2003) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2011) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2013) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2023) WIFI: Starting WiFi station...[0m
+[0;32mI (2024) pp: pp rom version: e7ae62f[0m
+[0;32mI (2025) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2030) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2036) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2039) wifi:wifi certification version: v7.0[0m
+[0;32mI (2043) wifi:config NVS flash: disabled[0m
+[0;32mI (2047) wifi:config nano formatting: disabled[0m
+[0;32mI (2051) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2056) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2060) wifi:Init management short buffer num: 32[0m
+[0;32mI (2065) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2069) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2073) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2077) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2081) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2085) AUDIO: MP3 playback done[0m
+[0;32mI (2088) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2094) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2097) wifi_init: rx ba win: 6[0m
+[0;32mI (2099) wifi_init: accept mbox: 6[0m
+[0;32mI (2102) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2105) wifi_init: udp mbox: 6[0m
+[0;32mI (2111) wifi_init: tcp mbox: 6[0m
+[0;32mI (2111) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2114) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2117) wifi_init: tcp mss: 1440[0m
+[0;32mI (2121) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2124) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2129) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2169) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2169) wifi:enable tsf[0m
+[0;32mI (2172) WIFI: Scanning for networks...[0m
+[0;32mI (2176) APP: State: INIT -> IDLE[0m
+[0;32mI (2177) APP: Started[0m
+[0;32mI (2177) webserver: Starting server on port 80[0m
+[0;32mI (2179) webserver: Server started[0m
+[0;32mI (2180) main_task: Returned from app_main()[0m
+[0;32mI (3338) AUDIO: MP3 playback done[0m
+[0;32mI (4584) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -33, Channel: 7, Authmode: 3[0m
+[0;32mI (4584) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (4586) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (5392) wifi:new:<7,0>, old:<1,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (5393) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (5396) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (5402) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (5403) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:1(originator)[0m
+[0;32mI (5407) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)[0m
+[0;32mI (5502) wifi:connected with Dang khoa, aid = 23, channel 7, BW20, bssid = 26:0b:2a:11:b2:74[0m
+[0;32mI (5502) wifi:security: WPA2-PSK, phy: bgn, rssi: -33[0m
+[0;32mI (5504) wifi:pm start, type: 1[0m
+
+[0;32mI (5507) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (5515) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (5524) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5578) wifi:<ba-add>idx:0 (ifx:0, 26:0b:2a:11:b2:74), tid:0, ssn:19, winSize:64[0m
+[0;32mI (6644) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (6645) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (6645) WIFI: Connected to: Dang khoa[0m
+[0;32mI (20680) webserver: WebSocket handshake[0m
+[0;32mI (21092) webserver: WS command: get_status[0m
+[0;32mI (21164) APP: [FINGER] Detected[0m
+[0;32mI (21169) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (23347) AS608: Failed to read data: -1/3[0m
+[0;33mW (23352) httpd_uri: httpd_uri: URI '/favicon.ico' not found[0m
+[0;33mW (23352) httpd_txrx: httpd_resp_send_err: 404 Not Found - Nothing matches the given URI[0m
+[0;32mI (23361) webserver: WS command: get_fingerprints[0m
+[0;33mW (23564) AS608: TemplateCount error: Not found in library[0m
+[0;33mW (27323) AS608: Response timeout or too short: 0 bytes[0m
+[0;33mW (27323) AS608: Search retry 1[0m
+[0;32mI (27776) FINGER: NO MATCH[0m
+[0;32mI (27776) APP: [FINGER] No match[0m
+[0;32mI (27781) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (27783) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (27784) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (29224) AUDIO: MP3 playback done[0m
+[0;32mI (33165) webserver: WS command: set_volume[0m
+[0;32mI (33165) AUDIO: Volume: 17%[0m
+[0;32mI (38554) APP: [FINGER] Detected[0m
+[0;32mI (38560) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (39026) FINGER: NO MATCH[0m
+[0;32mI (39026) APP: [FINGER] No match[0m
+[0;32mI (39031) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (39033) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (39034) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (40474) AUDIO: MP3 playback done[0m
+[0;32mI (41357) webserver: WS command: set_volume[0m
+[0;32mI (41357) AUDIO: Volume: 100%[0m
+[0;32mI (42548) APP: [FINGER] Detected[0m
+[0;32mI (42554) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (42980) FINGER: NO MATCH[0m
+[0;32mI (42980) APP: [FINGER] No match[0m
+[0;32mI (42985) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (42987) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (42988) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (44428) AUDIO: MP3 playback done[0m
+[0;32mI (44938) webserver: WS command: set_volume[0m
+[0;32mI (44939) AUDIO: Volume: 61%[0m
+[0;32mI (46040) APP: [FINGER] Detected[0m
+[0;32mI (46046) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (46489) FINGER: NO MATCH[0m
+[0;32mI (46489) APP: [FINGER] No match[0m
+[0;32mI (46494) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (46496) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (46497) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (47937) AUDIO: MP3 playback done[0m
+[0;32mI (48219) webserver: WS command: set_volume[0m
+[0;32mI (48219) AUDIO: Volume: 38%[0m
+[0;32mI (48967) APP: [FINGER] Detected[0m
+[0;32mI (48973) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (49420) FINGER: NO MATCH[0m
+[0;32mI (49420) APP: [FINGER] No match[0m
+[0;32mI (49425) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (49427) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (49428) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (50868) AUDIO: MP3 playback done[0m
+[0;32mI (51287) webserver: WS command: set_volume[0m
+[0;32mI (51287) AUDIO: Volume: 53%[0m
+[0;32mI (53160) APP: [FINGER] Detected[0m
+[0;32mI (53166) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (53627) FINGER: NO MATCH[0m
+[0;32mI (53627) APP: [FINGER] No match[0m
+[0;32mI (53632) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (53634) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (53635) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (55076) webserver: WS command: set_volume[0m
+[0;32mI (55076) AUDIO: Volume: 0%[0m
+[0;32mI (55077) AUDIO: MP3 playback done[0m
+[0;32mI (57021) webserver: WS command: set_volume[0m
+[0;32mI (57022) AUDIO: Volume: 47%[0m
+[0;32mI (59582) webserver: WS command: set_auto_search[0m
+[0;32mI (59582) APP: Auto search: disabled[0m
+[0;32mI (62881) APP: [FINGER] Detected[0m
+[0;32mI (62887) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (63362) FINGER: NO MATCH[0m
+[0;32mI (63362) APP: [FINGER] No match[0m
+[0;32mI (63367) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (63370) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (63370) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (64810) AUDIO: MP3 playback done[0m
+[0;32mI (65111) webserver: WS command: set_auto_search[0m
+[0;32mI (65112) APP: Auto search: enabled[0m
+[0;32mI (70333) webserver: WS command: get_fingerprints[0m
+[0;33mW (72489) AS608: Failed to read data: -1/3[0m
+[0;32mI (72493) webserver: WS command: get_status[0m
+[0;32mI (72500) APP: [FINGER] Detected[0m
+[0;32mI (72506) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (74854) AS608: Failed to read data: -1/3[0m
+[0;33mW (76754) AS608: Response timeout or too short: 3 bytes[0m
+[0;33mW (76754) AS608: GenChar retry 1[0m
+[0;32mI (77909) FINGER: NO MATCH[0m
+[0;32mI (77909) APP: [FINGER] No match[0m
+[0;32mI (77914) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (77916) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (77917) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (79357) AUDIO: MP3 playback done[0m
+[0;32mI (81357) APP: [FINGER] Detected[0m
+[0;32mI (81363) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (81802) FINGER: NO MATCH[0m
+[0;32mI (81802) APP: [FINGER] No match[0m
+[0;32mI (81807) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (81809) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (81810) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (83250) AUDIO: MP3 playback done[0m
+[0;32mI (84436) APP: [FINGER] Detected[0m
+[0;32mI (84441) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (84918) FINGER: NO MATCH[0m
+[0;32mI (84918) APP: [FINGER] No match[0m
+[0;32mI (84923) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (84925) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (84926) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (86366) AUDIO: MP3 playback done[0m
+[0;32mI (86976) APP: [FINGER] Detected[0m
+[0;32mI (86981) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (87505) AS608: Match found: ID=0, Score=306[0m
+[0;32mI (87505) FINGER: MATCH id=0 score=306[0m
+[0;32mI (87505) APP: [FINGER] Match id=0 score=306[0m
+[0;32mI (87510) AUDIO: Playing MP3: 19629 bytes[0m
+[0;32mI (87512) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (87514) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (88749) AUDIO: MP3 playback done[0m
+[0;32mI (93781) webserver: WS command: search[0m
+[0;32mI (93781) APP: State: IDLE -> SEARCHING[0m
+[0;32mI (94205) FINGER: CMD: SEARCH[0m
+[0;32mI (100962) APP: [FINGER] Detected[0m
+[0;32mI (100968) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (101429) FINGER: NO MATCH[0m
+[0;32mI (101429) APP: [FINGER] No match[0m
+[0;32mI (101434) APP: State: SEARCHING -> IDLE[0m
+[0;32mI (101434) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (101436) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (101437) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (102881) AUDIO: MP3 playback done[0m
+[0;32mI (111188) webserver: WS command: cancel[0m
+[0;32mI (111189) APP: Cancel[0m
+[0;32mI (114363) webserver: WS command: delete_all[0m
+[0;32mI (114364) APP: State: IDLE -> DELETING[0m
+[0;33mW (116273) AS608: Failed to read data: -1/3[0m
+[1;31mE (116273) APP: [FINGER] Delete fail[0m
+[0;32mI (116278) APP: State: DELETING -> IDLE[0m
+[0;32mI (116278) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (116280) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;33mW (116673) AS608: Response timeout or too short: 3 bytes[0m
+[0;32mI (117678) AUDIO: MP3 playback done[0m
+[0;32mI (123779) APP: [FINGER] Detected[0m
+[0;32mI (123785) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (124308) FINGER: NO MATCH[0m
+[0;32mI (124308) APP: [FINGER] No match[0m
+[0;32mI (124313) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (124315) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (124316) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (125756) AUDIO: MP3 playback done[0m
+[0;32mI (127179) webserver: WS command: get_fingerprints[0m
+[0;32mI (127386) webserver: WS command: get_status[0m
+[0;33mW (129218) AS608: Response timeout or too short: 0 bytes[0m
+[0;32mI (129416) webserver: WS command: get_fingerprints[0m
+[0;32mI (129622) webserver: WS command: get_status[0m
+[0;33mW (131440) AS608: Response timeout or too short: 0 bytes[0m
+[0;32mI (135866) webserver: WS command: enroll[0m
+[0;32mI (135867) APP: Request enroll (auto find slot)[0m
+[0;32mI (135867) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (136354) FINGER: Templates: 0 / 162[0m
+[0;32mI (136354) FINGER: CMD: ENROLL id=0[0m
+[0;32mI (136354) APP: [FINGER] Enroll start id=0[0m
+[0;32mI (136359) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (136361) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (139744) AUDIO: MP3 playback done[0m
+[0;32mI (139952) APP: [FINGER] Detected[0m
+[0;32mI (139958) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (140269) FINGER: ENROLL step1 OK[0m
+[0;32mI (140270) APP: [FINGER] Enroll step1 OK - remove finger[0m
+[0;32mI (140275) APP: State: ENROLL_STEP1 -> ENROLL_STEP2[0m
+[0;32mI (140275) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (140278) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (140280) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (141053) APP: [FINGER] Removed[0m
+[0;32mI (143098) AUDIO: MP3 playback done[0m
+[0;32mI (143346) APP: [FINGER] Detected[0m
+[0;32mI (143352) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (143702) FINGER: ENROLL step2 OK[0m
+[0;32mI (143703) APP: [FINGER] Enroll step2 OK[0m
+[0;32mI (143708) APP: State: ENROLL_STEP2 -> ENROLL_STORE[0m
+[0;32mI (143708) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (143710) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (143712) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (144258) FINGER: ENROLL OK id=0[0m
+[0;32mI (144258) APP: [FINGER] Enroll success[0m
+[0;32mI (144263) APP: State: ENROLL_STORE -> IDLE[0m
+[0;32mI (144294) AUDIO: MP3 playback done[0m
+[0;32mI (144294) AUDIO: Playing MP3: 21933 bytes[0m
+[0;32mI (144297) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (145667) AUDIO: MP3 playback done[0m
+[0;32mI (148974) webserver: WS command: get_fingerprints[0m
+[0;32mI (149381) webserver: WS command: get_status[0m
+[0;32mI (156143) APP: [FINGER] Detected[0m
+[0;32mI (156149) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (156615) FINGER: NO MATCH[0m
+[0;32mI (156615) APP: [FINGER] No match[0m
+[0;32mI (156620) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (156622) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (156623) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (158063) AUDIO: MP3 playback done[0m
+[0;32mI (159575) APP: [FINGER] Detected[0m
+[0;32mI (159580) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (160113) AS608: Match found: ID=0, Score=345[0m
+[0;32mI (160113) FINGER: MATCH id=0 score=345[0m
+[0;32mI (160113) APP: [FINGER] Match id=0 score=345[0m
+[0;32mI (160119) AUDIO: Playing MP3: 19629 bytes[0m
+[0;32mI (160121) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (160122) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (161357) AUDIO: MP3 playback done[0m
+[0;32mI (170195) BUTTON: Button 0: CLICK[0m
+[0;32mI (170196) APP: [BUTTON] Click btn=0[0m
+[0;32mI (170196) APP: Request enroll (auto find slot)[0m
+[0;32mI (170196) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (170510) FINGER: Templates: 1 / 162[0m
+[0;32mI (170510) FINGER: CMD: ENROLL id=1[0m
+[0;32mI (170510) APP: [FINGER] Enroll start id=1[0m
+[0;32mI (170515) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (170517) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (173897) AUDIO: MP3 playback done[0m
+[0;32mI (176627) APP: [FINGER] Detected[0m
+[0;32mI (176633) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (176913) FINGER: ENROLL step1 OK[0m
+[0;32mI (176913) APP: [FINGER] Enroll step1 OK - remove finger[0m
+[0;32mI (176918) APP: State: ENROLL_STEP1 -> ENROLL_STEP2[0m
+[0;32mI (176918) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (176921) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (176923) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (177571) APP: [FINGER] Removed[0m
+[0;32mI (178401) APP: [FINGER] Detected[0m
+[0;32mI (178406) AUDIO: MP3 playback done[0m
+[0;32mI (178407) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (178629) FINGER: ENROLL step2 OK[0m
+[0;32mI (178629) APP: [FINGER] Enroll step2 OK[0m
+[0;32mI (178635) APP: State: ENROLL_STEP2 -> ENROLL_STORE[0m
+[0;32mI (178635) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (178637) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (178638) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;33mW (178982) AS608: RegModel error: Merge failed[0m
+[1;31mE (178982) FINGER: reg_model fail[0m
+[1;31mE (178982) APP: [FINGER] Enroll fail[0m
+[0;32mI (178987) APP: State: ENROLL_STORE -> IDLE[0m
+[0;32mI (179003) AUDIO: MP3 playback done[0m
+[0;32mI (179003) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (179006) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (180443) AUDIO: MP3 playback done[0m
+[0;32mI (182848) APP: [FINGER] Detected[0m
+[0;32mI (182854) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (183326) FINGER: NO MATCH[0m
+[0;32mI (183326) APP: [FINGER] No match[0m
+[0;32mI (183331) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (183333) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (183334) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (184774) AUDIO: MP3 playback done[0m
+[0;32mI (185475) BUTTON: Button 0: CLICK[0m
+[0;32mI (185476) APP: [BUTTON] Click btn=0[0m
+[0;32mI (185476) APP: Request enroll (auto find slot)[0m
+[0;32mI (185476) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (186024) FINGER: Templates: 1 / 162[0m
+[0;32mI (186024) FINGER: CMD: ENROLL id=1[0m
+[0;32mI (186024) APP: [FINGER] Enroll start id=1[0m
+[0;32mI (186029) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (186032) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (187092) APP: [FINGER] Detected[0m
+[0;32mI (187107) AUDIO: MP3 playback done[0m
+[0;32mI (187107) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (187364) FINGER: ENROLL step1 OK[0m
+[0;32mI (187364) APP: [FINGER] Enroll step1 OK - remove finger[0m
+[0;32mI (187369) APP: State: ENROLL_STEP1 -> ENROLL_STEP2[0m
+[0;32mI (187369) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (187372) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (187374) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (188199) APP: [FINGER] Removed[0m
+[0;32mI (189437) APP: [FINGER] Detected[0m
+[0;32mI (189472) AUDIO: MP3 playback done[0m
+[0;32mI (189472) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (189738) FINGER: ENROLL step2 OK[0m
+[0;32mI (189738) APP: [FINGER] Enroll step2 OK[0m
+[0;32mI (189744) APP: State: ENROLL_STEP2 -> ENROLL_STORE[0m
+[0;32mI (189744) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (189746) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (189747) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (190293) FINGER: ENROLL OK id=1[0m
+[0;32mI (190293) APP: [FINGER] Enroll success[0m
+[0;32mI (190298) APP: State: ENROLL_STORE -> IDLE[0m
+[0;32mI (190330) AUDIO: MP3 playback done[0m
+[0;32mI (190330) AUDIO: Playing MP3: 21933 bytes[0m
+[0;32mI (190333) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (191702) AUDIO: MP3 playback done[0m
+[0;32mI (194134) webserver: WS command: get_fingerprints[0m
+[0;33mW (195966) AS608: Failed to read data: -1/3[0m
+[0;32mI (195969) webserver: WS command: get_status[0m
+[0;32mI (195977) APP: [FINGER] Detected[0m
+[0;32mI (195982) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (198296) AS608: Failed to read data: -1/3[0m
+[0;33mW (200196) AS608: Response timeout or too short: 3 bytes[0m
+[0;33mW (200196) AS608: GenChar retry 1[0m
+[0;32mI (201197) webserver: WS command: get_fingerprints[0m
+[0;33mW (201374) AS608: Search error: OK[0m
+[0;32mI (201374) FINGER: NO MATCH[0m
+[0;32mI (201374) APP: [FINGER] No match[0m
+[0;32mI (201379) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (201381) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (201382) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (202825) AUDIO: MP3 playback done[0m
+[0;33mW (203084) AS608: Failed to read data: -1/3[0m
+[0;32mI (203087) webserver: WS command: get_status[0m
+[0;33mW (204897) AS608: Response timeout or too short: 0 bytes[0m
+[0;32mI (209287) webserver: WS command: get_fingerprints[0m
+[0;32mI (209465) APP: [FINGER] Detected[0m
+[0;32mI (209470) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (211671) AS608: Failed to read data: -1/3[0m
+[0;32mI (211674) webserver: WS command: get_status[0m
+[0;33mW (211877) AS608: TemplateCount error: Not found in library[0m
+[0;33mW (215636) AS608: Response timeout or too short: 0 bytes[0m
+[0;33mW (215636) AS608: Search retry 1[0m
+[0;32mI (216089) FINGER: NO MATCH[0m
+[0;32mI (216089) APP: [FINGER] No match[0m
+[0;32mI (216094) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (216096) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (216097) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (217537) AUDIO: MP3 playback done[0m
+[0;32mI (220244) APP: [FINGER] Detected[0m
+[0;32mI (220250) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (220680) FINGER: NO MATCH[0m
+[0;32mI (220680) APP: [FINGER] No match[0m
+[0;32mI (220685) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (220687) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (220688) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (222128) AUDIO: MP3 playback done[0m
+[0;32mI (223202) APP: [FINGER] Detected[0m
+[0;32mI (223208) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (223704) AS608: Match found: ID=1, Score=187[0m
+[0;32mI (223704) FINGER: MATCH id=1 score=187[0m
+[0;32mI (223704) APP: [FINGER] Match id=1 score=187[0m
+[0;32mI (223710) AUDIO: Playing MP3: 19629 bytes[0m
+[0;32mI (223712) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (223714) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (224948) AUDIO: MP3 playback done[0m
+[0;32mI (226599) webserver: WS command: get_fingerprints[0m
+[0;32mI (227218) APP: [FINGER] Detected[0m
+[0;32mI (227223) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (229390) AS608: Failed to read data: -1/3[0m
+[0;32mI (229393) webserver: WS command: get_status[0m
+[0;33mW (229596) AS608: TemplateCount error: Not found in library[0m
+[0;32mI (229600) webserver: WS command: set_volume[0m
+[0;32mI (229601) AUDIO: Volume: 34%[0m
+[0;32mI (231506) webserver: WS command: set_volume[0m
+[0;32mI (231507) AUDIO: Volume: 30%[0m
+[0;33mW (233355) AS608: Response timeout or too short: 0 bytes[0m
+[0;33mW (233355) AS608: Search retry 1[0m
+[0;32mI (233808) FINGER: NO MATCH[0m
+[0;32mI (233808) APP: [FINGER] No match[0m
+[0;32mI (233813) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (233815) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (233816) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (235256) AUDIO: MP3 playback done[0m
+[0;32mI (247127) APP: [FINGER] Detected[0m
+[0;32mI (247133) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (247533) FINGER: NO MATCH[0m
+[0;32mI (247533) APP: [FINGER] No match[0m
+[0;32mI (247538) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (247540) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (247541) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (248981) AUDIO: MP3 playback done[0m
+[0;32mI (251655) APP: [FINGER] Detected[0m
+[0;32mI (251660) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (252060) AS608: Match found: ID=1, Score=59[0m
+[0;32mI (252060) FINGER: MATCH id=1 score=59[0m
+[0;32mI (252060) APP: [FINGER] Match id=1 score=59[0m
+[0;32mI (252065) AUDIO: Playing MP3: 19629 bytes[0m
+[0;32mI (252067) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (252069) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (253304) AUDIO: MP3 playback done[0m
+[0;32mI (254129) APP: [FINGER] Detected[0m
+[0;32mI (254135) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (254535) FINGER: NO MATCH[0m
+[0;32mI (254535) APP: [FINGER] No match[0m
+[0;32mI (254540) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (254544) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (254544) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (255984) AUDIO: MP3 playback done[0m
+[0;32mI (257516) webserver: WS command: search[0m
+[0;32mI (257516) APP: State: IDLE -> SEARCHING[0m
+[0;32mI (258111) FINGER: CMD: SEARCH[0m
+[0;32mI (260484) webserver: WS command: cancel[0m
+[0;32mI (260484) APP: Cancel[0m
+[0;32mI (260484) APP: State: SEARCHING -> IDLE[0m
+[0;32mI (264375) webserver: WS command: delete_all[0m
+[0;32mI (264375) APP: State: IDLE -> DELETING[0m
+[0;33mW (264585) AS608: Empty error: No finger detected[0m
+[1;31mE (264585) APP: [FINGER] Delete fail[0m
+[0;32mI (264591) APP: State: DELETING -> IDLE[0m
+[0;32mI (264591) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (264593) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (265989) AUDIO: MP3 playback done[0m
+[0;33mW (266151) AS608: Response timeout or too short: 0 bytes[0m
+[0;32mI (266218) webserver: WS command: enroll[0m
+[0;32mI (266219) APP: Request enroll (auto find slot)[0m
+[0;32mI (266219) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (266853) FINGER: Templates: 0 / 162[0m
+[0;32mI (266853) FINGER: CMD: ENROLL id=0[0m
+[0;32mI (266853) APP: [FINGER] Enroll start id=0[0m
+[0;32mI (266858) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (266860) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (270242) AUDIO: MP3 playback done[0m
+[0;32mI (270290) APP: [FINGER] Detected[0m
+[0;32mI (270295) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (270493) FINGER: ENROLL step1 OK[0m
+[0;32mI (270493) APP: [FINGER] Enroll step1 OK - remove finger[0m
+[0;32mI (270498) APP: State: ENROLL_STEP1 -> ENROLL_STEP2[0m
+[0;32mI (270498) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (270501) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (270503) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (271121) APP: [FINGER] Removed[0m
+[0;32mI (272261) APP: [FINGER] Detected[0m
+[0;32mI (272279) AUDIO: MP3 playback done[0m
+[0;32mI (272279) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (272508) FINGER: ENROLL step2 OK[0m
+[0;32mI (272509) APP: [FINGER] Enroll step2 OK[0m
+[0;32mI (272514) APP: State: ENROLL_STEP2 -> ENROLL_STORE[0m
+[0;32mI (272514) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (272516) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (272517) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (273063) FINGER: ENROLL OK id=0[0m
+[0;32mI (273063) APP: [FINGER] Enroll success[0m
+[0;32mI (273068) APP: State: ENROLL_STORE -> IDLE[0m
+[0;32mI (273100) AUDIO: MP3 playback done[0m
+[0;32mI (273100) AUDIO: Playing MP3: 21933 bytes[0m
+[0;32mI (273103) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (274472) AUDIO: MP3 playback done[0m
+[0;32mI (277994) webserver: WS command: get_fingerprints[0m
+[0;32mI (278343) webserver: WS command: get_status[0m
+[0;32mI (278401) APP: [FINGER] Detected[0m
+[0;32mI (278406) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (280744) AS608: Failed to read data: -1/3[0m
+[0;33mW (282644) AS608: Response timeout or too short: 3 bytes[0m
+[0;33mW (282644) AS608: GenChar retry 1[0m
+[0;32mI (283755) FINGER: NO MATCH[0m
+[0;32mI (283755) APP: [FINGER] No match[0m
+[0;32mI (283760) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (283762) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (283763) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (285203) AUDIO: MP3 playback done[0m
+[0;32mI (340554) APP: [FINGER] Detected[0m
+[0;32mI (340560) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (341015) FINGER: NO MATCH[0m
+[0;32mI (341015) APP: [FINGER] No match[0m
+[0;32mI (341020) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (341022) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (341023) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (342463) AUDIO: MP3 playback done[0m
+[0;32mI (782) cpu_start: Pro cpu start user code[0m
+[0;32mI (782) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (782) app_init: Application information:[0m
+[0;32mI (783) app_init: Project name:     AS608-ESP32s3[0m
+[0;32mI (787) app_init: App version:      1[0m
+[0;32mI (790) app_init: Compile time:     Dec  5 2025 12:40:45[0m
+[0;32mI (795) app_init: ELF file SHA256:  d2d51c236...[0m
+[0;32mI (800) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (804) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (808) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (812) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (816) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (822) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (827) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (832) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (837) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (843) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (850) spi_flash: detected chip: generic[0m
+[0;32mI (853) spi_flash: flash io: dio[0m
+[0;32mI (857) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (862) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (869) main_task: Started on CPU0[0m
+[0;32mI (872) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (880) main_task: Calling app_main()[0m
+[0;32mI (883) MAIN: =========================================[0m
+[0;32mI (888) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (892) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (895) MAIN: =========================================[0m
+[0;32mI (922) webserver: Initialized[0m
+[0;32mI (923) APP: Initializing...[0m
+[0;32mI (923) BUTTON: Initializing buttons...[0m
+[0;32mI (923) button: IoT Button Version: 3.5.0[0m
+[0;32mI (925) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (928) BUTTON: Buttons initialized[0m
+[0;32mI (931) AUDIO: Initializing...[0m
+[0;32mI (935) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (940) AUDIO: MP3 decoder initialized[0m
+[0;32mI (942) AUDIO: Task started[0m
+[0;32mI (945) AUDIO: Initialized[0m
+[0;32mI (947) WIFI: Initializing WiFi module...[0m
+[0;32mI (953) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (955) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (959) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (964) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (971) WIFI: WiFi module initialized[0m
+[0;32mI (973) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (979) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1390) AS608: AS608 initialized successfully[0m
+[0;32mI (1795) FINGER: Library=300 Security=3[0m
+[0;32mI (1997) FINGER: Templates=1[0m
+[0;32mI (1997) APP: [FINGER] Ready[0m
+[0;32mI (1997) FINGER: Task started[0m
+[0;32mI (1997) FINGER: Initialized[0m
+[0;32mI (1998) APP: Initialized[0m
+[0;32mI (1999) APP: Starting...[0m
+[0;32mI (2001) AUDIO: Volume: 50%[0m
+[0;32mI (2002) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2010) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2012) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2022) WIFI: Starting WiFi station...[0m
+[0;32mI (2023) pp: pp rom version: e7ae62f[0m
+[0;32mI (2024) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2029) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2035) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2038) wifi:wifi certification version: v7.0[0m
+[0;32mI (2042) wifi:config NVS flash: disabled[0m
+[0;32mI (2046) wifi:config nano formatting: disabled[0m
+[0;32mI (2050) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2055) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2059) wifi:Init management short buffer num: 32[0m
+[0;32mI (2064) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2068) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2072) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2076) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2080) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2084) AUDIO: MP3 playback done[0m
+[0;32mI (2087) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2093) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2096) wifi_init: rx ba win: 6[0m
+[0;32mI (2098) wifi_init: accept mbox: 6[0m
+[0;32mI (2101) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2104) wifi_init: udp mbox: 6[0m
+[0;32mI (2110) wifi_init: tcp mbox: 6[0m
+[0;32mI (2110) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2113) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2116) wifi_init: tcp mss: 1440[0m
+[0;32mI (2120) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2123) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2128) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2168) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (2184) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2184) wifi:enable tsf[0m
+[0;32mI (2187) WIFI: Scanning for networks...[0m
+[0;32mI (2193) APP: State: INIT -> IDLE[0m
+[0;32mI (2194) APP: Started[0m
+[0;32mI (2194) webserver: Starting server on port 80[0m
+[0;32mI (2196) webserver: Server started[0m
+[0;32mI (2197) main_task: Returned from app_main()[0m
+[0;32mI (3337) AUDIO: MP3 playback done[0m
+[0;32mI (4598) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -42, Channel: 7, Authmode: 3[0m
+[0;32mI (4599) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (4601) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (5407) wifi:new:<7,0>, old:<1,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (5408) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (5410) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (5417) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (5418) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:1(originator)[0m
+[0;32mI (5422) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)[0m
+[0;32mI (5523) wifi:connected with Dang khoa, aid = 23, channel 7, BW20, bssid = 26:0b:2a:11:b2:74[0m
+[0;32mI (5524) wifi:security: WPA2-PSK, phy: bgn, rssi: -43[0m
+[0;32mI (5526) wifi:pm start, type: 1[0m
+
+[0;32mI (5528) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (5537) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (5586) wifi:<ba-add>idx:0 (ifx:0, 26:0b:2a:11:b2:74), tid:0, ssn:141, winSize:64[0m
+[0;32mI (5612) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (6718) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (6719) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (6719) WIFI: Connected to: Dang khoa[0m
+[0;32mI (822) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (827) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (832) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (837) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (843) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (850) spi_flash: detected chip: generic[0m
+[0;32mI (853) spi_flash: flash io: dio[0m
+[0;32mI (857) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (862) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (869) main_task: Started on CPU0[0m
+[0;32mI (872) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (880) main_task: Calling app_main()[0m
+[0;32mI (883) MAIN: =========================================[0m
+[0;32mI (888) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (892) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (895) MAIN: =========================================[0m
+[0;32mI (922) webserver: Initialized[0m
+[0;32mI (923) APP: Initializing...[0m
+[0;32mI (923) BUTTON: Initializing buttons...[0m
+[0;32mI (923) button: IoT Button Version: 3.5.0[0m
+[0;32mI (924) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (928) BUTTON: Buttons initialized[0m
+[0;32mI (931) AUDIO: Initializing...[0m
+[0;32mI (935) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (939) AUDIO: MP3 decoder initialized[0m
+[0;32mI (942) AUDIO: Task started[0m
+[0;32mI (945) AUDIO: Initialized[0m
+[0;32mI (947) WIFI: Initializing WiFi module...[0m
+[0;32mI (953) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (955) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (958) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (963) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (970) WIFI: WiFi module initialized[0m
+[0;32mI (972) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (979) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1390) AS608: AS608 initialized successfully[0m
+[0;32mI (1795) FINGER: Library=300 Security=3[0m
+[0;32mI (1997) FINGER: Templates=1[0m
+[0;32mI (1997) APP: [FINGER] Ready[0m
+[0;32mI (1997) FINGER: Task started[0m
+[0;32mI (1997) FINGER: Initialized[0m
+[0;32mI (1998) APP: Initialized[0m
+[0;32mI (1999) APP: Starting...[0m
+[0;32mI (2001) AUDIO: Volume: 50%[0m
+[0;32mI (2002) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2010) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2012) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2022) WIFI: Starting WiFi station...[0m
+[0;32mI (2023) pp: pp rom version: e7ae62f[0m
+[0;32mI (2024) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2029) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2035) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2038) wifi:wifi certification version: v7.0[0m
+[0;32mI (2042) wifi:config NVS flash: disabled[0m
+[0;32mI (2046) wifi:config nano formatting: disabled[0m
+[0;32mI (2050) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2055) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2059) wifi:Init management short buffer num: 32[0m
+[0;32mI (2064) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2068) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2072) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2076) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2080) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2084) AUDIO: MP3 playback done[0m
+[0;32mI (2087) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2093) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2096) wifi_init: rx ba win: 6[0m
+[0;32mI (2098) wifi_init: accept mbox: 6[0m
+[0;32mI (2101) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2104) wifi_init: udp mbox: 6[0m
+[0;32mI (2110) wifi_init: tcp mbox: 6[0m
+[0;32mI (2110) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2113) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2116) wifi_init: tcp mss: 1440[0m
+[0;32mI (2119) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2123) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2128) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2168) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2168) wifi:enable tsf[0m
+[0;32mI (2171) WIFI: Scanning for networks...[0m
+[0;32mI (2175) APP: State: INIT -> IDLE[0m
+[0;32mI (2176) APP: Started[0m
+[0;32mI (2176) webserver: Starting server on port 80[0m
+[0;32mI (2178) webserver: Server started[0m
+[0;32mI (2179) main_task: Returned from app_main()[0m
+[0;32mI (3337) AUDIO: MP3 playback done[0m
+[0;32mI (4583) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -33, Channel: 7, Authmode: 3[0m
+[0;32mI (4583) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (4585) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (5391) wifi:new:<7,0>, old:<1,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (5392) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (5395) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (5402) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (5408) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:1(originator)[0m
+[0;32mI (5503) wifi:connected with Dang khoa, aid = 23, channel 7, BW20, bssid = 26:0b:2a:11:b2:74[0m
+[0;32mI (5504) wifi:security: WPA2-PSK, phy: bgn, rssi: -34[0m
+[0;32mI (5506) wifi:pm start, type: 1[0m
+
+[0;32mI (5508) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (5517) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (5525) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5587) wifi:<ba-add>idx:0 (ifx:0, 26:0b:2a:11:b2:74), tid:0, ssn:149, winSize:64[0m
+[0;32mI (6716) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (6717) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (6717) WIFI: Connected to: Dang khoa[0m
+[0;32mI (10165) APP: [FINGER] Detected[0m
+[0;32mI (10170) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (10671) FINGER: NO MATCH[0m
+[0;32mI (10671) APP: [FINGER] No match[0m
+[0;32mI (10676) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (10678) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (10679) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (12119) AUDIO: MP3 playback done[0m
+[0;32mI (13456) APP: [FINGER] Detected[0m
+[0;32mI (13461) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (13920) AS608: Match found: ID=0, Score=172[0m
+[0;32mI (13920) FINGER: MATCH id=0 score=172[0m
+[0;32mI (13920) APP: [FINGER] Match id=0 score=172[0m
+[0;32mI (13925) AUDIO: Playing MP3: 19629 bytes[0m
+[0;32mI (13927) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (13929) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (15164) AUDIO: MP3 playback done[0m
+[0;32mI (16731) APP: [FINGER] Detected[0m
+[0;32mI (16736) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (17261) FINGER: NO MATCH[0m
+[0;32mI (17261) APP: [FINGER] No match[0m
+[0;32mI (17266) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (17268) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (17269) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (18709) AUDIO: MP3 playback done[0m
+[0;32mI (23603) APP: [FINGER] Detected[0m
+[0;32mI (23609) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (24009) FINGER: NO MATCH[0m
+[0;32mI (24009) APP: [FINGER] No match[0m
+[0;32mI (24014) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (24016) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (24017) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (24572) webserver: WebSocket handshake[0m
+[0;32mI (24582) webserver: WS command: get_status[0m
+[0;32mI (24716) APP: [FINGER] Detected[0m
+[0;32mI (24737) AUDIO: MP3 playback done[0m
+[0;32mI (24737) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (26978) AS608: Failed to read data: -1/3[0m
+[0;32mI (26982) webserver: WS command: get_fingerprints[0m
+[0;33mW (27185) AS608: TemplateCount error: Not found in library[0m
+[0;33mW (30944) AS608: Response timeout or too short: 0 bytes[0m
+[0;33mW (30944) AS608: Search retry 1[0m
+[0;32mI (31397) FINGER: NO MATCH[0m
+[0;32mI (31397) APP: [FINGER] No match[0m
+[0;32mI (31402) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (31404) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (31405) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (32845) AUDIO: MP3 playback done[0m
+[0;32mI (34797) webserver: WS command: enroll[0m
+[0;32mI (34798) APP: Request enroll (auto find slot)[0m
+[0;32mI (34798) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (35155) FINGER: Templates: 1 / 162[0m
+[0;32mI (35155) FINGER: CMD: ENROLL id=1[0m
+[0;32mI (35155) APP: [FINGER] Enroll start id=1[0m
+[0;32mI (35160) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (35162) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (38545) AUDIO: MP3 playback done[0m
+[0;32mI (39391) APP: [FINGER] Detected[0m
+[0;32mI (39397) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (39657) FINGER: ENROLL step1 OK[0m
+[0;32mI (39657) APP: [FINGER] Enroll step1 OK - remove finger[0m
+[0;32mI (39662) APP: State: ENROLL_STEP1 -> ENROLL_STEP2[0m
+[0;32mI (39662) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (39665) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (39667) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (39968) APP: [FINGER] Removed[0m
+[0;32mI (42484) AUDIO: MP3 playback done[0m
+[0;32mI (42637) APP: [FINGER] Detected[0m
+[0;32mI (42642) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (42900) FINGER: ENROLL step2 OK[0m
+[0;32mI (42900) APP: [FINGER] Enroll step2 OK[0m
+[0;32mI (42905) APP: State: ENROLL_STEP2 -> ENROLL_STORE[0m
+[0;32mI (42905) AUDIO: Playing MP3: 44973 bytes[0m
+[0;32mI (42907) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (42908) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (43454) FINGER: ENROLL OK id=1[0m
+[0;32mI (43454) APP: [FINGER] Enroll success[0m
+[0;32mI (43455) AUDIO: MP3 playback done[0m
+[0;32mI (43459) APP: State: ENROLL_STORE -> IDLE[0m
+[0;32mI (43459) AUDIO: Playing MP3: 21933 bytes[0m
+[0;32mI (43462) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (44826) AUDIO: MP3 playback done[0m
+[0;32mI (46881) webserver: WS command: get_fingerprints[0m
+[0;33mW (48902) AS608: Failed to read data: -1/3[0m
+[0;32mI (48909) APP: [FINGER] Detected[0m
+[0;32mI (48914) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;33mW (51251) AS608: Failed to read data: -1/3[0m
+[0;32mI (51254) webserver: WS command: get_status[0m
+[0;33mW (51457) AS608: TemplateCount error: Not found in library[0m
+[0;32mI (54663) webserver: WS command: get_fingerprints[0m
+[0;33mW (54670) AS608: Search error: OK[0m
+[0;32mI (54671) FINGER: NO MATCH[0m
+[0;32mI (54671) APP: [FINGER] No match[0m
+[0;32mI (54676) AUDIO: Playing MP3: 23085 bytes[0m
+[0;32mI (54678) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (54679) AUDIO: Changing sample rate: 16000 -> 32000 Hz[0m
+[0;32mI (54869) webserver: WS command: get_status[0m
+[0;32mI (56121) AUDIO: MP3 playback done[0m
+[0;33mW (56679) AS608: Response timeout or too short: 0 bytes[0m
+[0;32mI (109764) BUTTON: Button 0: CLICK[0m
+[0;32mI (109765) APP: [BUTTON] Click btn=0[0m
+[0;32mI (109765) APP: Request enroll (auto find slot)[0m
+[0;32mI (109765) APP: State: IDLE -> ENROLL_STEP1[0m
+[0;32mI (110412) FINGER: Templates: 2 / 162[0m
+[0;32mI (110412) FINGER: CMD: ENROLL id=2[0m
+[0;32mI (110412) APP: [FINGER] Enroll start id=2[0m
+[0;32mI (110417) AUDIO: Playing MP3: 54765 bytes[0m
+[0;32mI (110419) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (112894) BUTTON: Button 0: DOUBLE_CLICK[0m
+[0;32mI (112895) APP: [BUTTON] Double click btn=0[0m
+[0;33mW (112895) APP: Cannot start WiFi config: not IDLE[0m
+[0;32mI (113796) AUDIO: MP3 playback done[0m
+[0;32mI (114339) BUTTON: Button 0: CLICK[0m
+[0;32mI (114340) APP: [BUTTON] Click btn=0[0m
+[0;32mI (114340) APP: Cancel[0m
+[0;32mI (114340) APP: State: ENROLL_STEP1 -> IDLE[0m
+[0;32mI (114367) FINGER: CMD: CANCEL[0m
+[0;32mI (114367) APP: [FINGER] Enroll cancelled[0m
+[0;32mI (114372) AUDIO: Changing sample rate: 32000 -> 16000 Hz[0m
+[0;32mI (116814) BUTTON: Button 0: DOUBLE_CLICK[0m
+[0;32mI (116815) APP: [BUTTON] Double click btn=0[0m
+[0;32mI (116815) APP: Starting WiFi configuration...[0m
+[0;32mI (116815) APP: State: IDLE -> CONFIG_WIFI[0m
+[0;32mI (116819) WIFI: Stopping WiFi...[0m
+[0;32mI (116823) wifi:state: run -> init (0x0)[0m
+[0;32mI (116826) wifi:pm stop, total sleep time: 99391763 us / 111318010 us[0m
+
+[0;32mI (116832) wifi:<ba-del>idx:0, tid:0[0m
+[0;32mI (116836) wifi:new:<7,0>, old:<7,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (116874) wifi:flush txq[0m
+[0;32mI (116874) wifi:stop sw txq[0m
+[0;32mI (116874) wifi:lmac stop hw txq[0m
+[0;32mI (116876) wifi:Deinit lldesc rx mblock:10[0m
+[0;32mI (116878) WIFI: Starting WiFi configuration AP...[0m
+[0;33mW (116879) httpd_txrx: httpd_sock_err: error in recv : 113[0m
+[0;32mI (116880) pp: pp rom version: e7ae62f[0m
+[0;33mW (116885) httpd_txrx: httpd_sock_err: error in recv : 113[0m
+[0;32mI (116888) net80211: net80211 rom version: e7ae62f[0m
+[0;33mW (116893) httpd_ws: httpd_ws_recv_frame: WS frame is not properly masked.[0m
+[0;32mI (116899) wifi:E (116904) webserver: httpd_ws_recv_frame failed: 259[0m
+wifi driver task: 3fcc2054, prio:23, stack:6656, core=0
+[0;32mI (116926) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (116927) wifi:wifi certification version: v7.0[0m
+[0;32mI (116927) wifi:config NVS flash: enabled[0m
+[0;32mI (116928) wifi:config nano formatting: disabled[0m
+[0;32mI (116932) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (116937) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (116942) wifi:Init management short buffer num: 32[0m
+[0;32mI (116946) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (116951) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (116955) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (116959) wifi:Init static rx buffer num: 10[0m
+[0;32mI (116963) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (116968) wifi_init: rx ba win: 6[0m
+[0;32mI (116970) wifi_init: accept mbox: 6[0m
+[0;32mI (116974) wifi_init: tcpip mbox: 32[0m
+[0;32mI (116977) wifi_init: udp mbox: 6[0m
+[0;32mI (116980) wifi_init: tcp mbox: 6[0m
+[0;32mI (116983) wifi_init: tcp tx win: 5760[0m
+[0;32mI (116987) wifi_init: tcp rx win: 5760[0m
+[0;32mI (116990) wifi_init: tcp mss: 1440[0m
+[0;32mI (116993) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (116997) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (117002) DnsServer: Starting DNS server[0m
+[0;32mI (117010) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (117012) wifi:mode : sta (d0:cf:13:2f:5a:84) + softAP (d0:cf:13:2f:5a:85)[0m
+[0;32mI (117016) wifi:enable tsf[0m
+[0;32mI (117019) wifi:Total power save buffer number: 16[0m
+[0;32mI (117023) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (117027) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (117032) WifiConfigurationAp: Access Point started with SSID AS608--5A85[0m
+[1;31mE (117039) httpd: httpd_server_init: error in listen (112)[0m
+ESP_ERROR_CHECK failed: esp_err_t 0xffffffff (ESP_FAIL) at 0x42010851
+file: "./components/khoa_esp_wifi/wifi_configuration_ap.cc" line 227
+func: void WifiConfigurationAp::StartWebServer()
+expression: httpd_start(&server_, &config)
+
+abort() was called at PC 0x4037e60b on core 0
+
+
+Backtrace: 0x4037e64d:0x3fcea9d0 0x4037e615:0x3fcea9f0 0x40386db5:0x3fceaa10 0x4037e60b:0x3fceaa80 0x42010851:0x3fceaab0 0x420117f7:0x3fceac60 0x4200d7ff:0x3fceaca0 0x4200c089:0x3fcead10 0x4200c10d:0x3fcead30 0x420a9bbd:0x3fcead50 0x420a95b5:0x3fcead80 0x420a969d:0x3fceadc0 0x4037f3e9:0x3fceade0
+
+
+
+
+ELF file SHA256: d2d51c236
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037e7ed
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f34
+entry 0x403c8924
+[0;32mI (24) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Dec  5 2025 12:41:50[0m
+[0;32mI (24) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (28) boot: efuse block revision: v1.3[0m
+[0;32mI (31) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (35) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32s3: SPI Flash Size : 4MB[0m
+[0;32mI (43) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (50) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 002c0000[0m
+[0;32mI (75) boot:  3 storage          Unknown data     01 82 002d0000 00130000[0m
+[0;32mI (82) boot: End of partition table[0m
+[0;32mI (85) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=694a4h (431268) map[0m
+[0;32mI (169) esp_image: segment 1: paddr=000794cc vaddr=3fc9d400 size=050b8h ( 20664) load[0m
+[0;32mI (173) esp_image: segment 2: paddr=0007e58c vaddr=40374000 size=01a8ch (  6796) load[0m
+[0;32mI (175) esp_image: segment 3: paddr=00080020 vaddr=42000020 size=af764h (718692) map[0m
+[0;32mI (307) esp_image: segment 4: paddr=0012f78c vaddr=40375a8c size=17874h ( 96372) load[0m
+[0;32mI (328) esp_image: segment 5: paddr=00147008 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (338) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (338) boot: Disabling RNG early entropy source...[0m
+[0;32mI (349) esp_psram: Found 2MB PSRAM device[0m
+[0;32mI (349) esp_psram: Speed: 40MHz[0m
+[0;32mI (349) cpu_start: Multicore app[0m
+[0;32mI (768) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (777) cpu_start: Pro cpu start user code[0m
+[0;32mI (777) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (777) app_init: Application information:[0m
+[0;32mI (777) app_init: Project name:     AS608-ESP32s3[0m
+[0;32mI (781) app_init: App version:      1[0m
+[0;32mI (785) app_init: Compile time:     Dec  5 2025 12:40:45[0m
+[0;32mI (790) app_init: ELF file SHA256:  d2d51c236...[0m
+[0;32mI (794) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (799) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (802) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (806) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (810) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (817) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (822) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (827) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (832) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (838) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (845) spi_flash: detected chip: generic[0m
+[0;32mI (847) spi_flash: flash io: dio[0m
+[0;32mI (851) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (857) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (864) main_task: Started on CPU0[0m
+[0;32mI (867) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (875) main_task: Calling app_main()[0m
+[0;32mI (878) MAIN: =========================================[0m
+[0;32mI (883) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (887) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (890) MAIN: =========================================[0m
+[0;32mI (917) webserver: Initialized[0m
+[0;32mI (918) APP: Initializing...[0m
+[0;32mI (918) BUTTON: Initializing buttons...[0m
+[0;32mI (918) button: IoT Button Version: 3.5.0[0m
+[0;32mI (919) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (923) BUTTON: Buttons initialized[0m
+[0;32mI (926) AUDIO: Initializing...[0m
+[0;32mI (930) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (934) AUDIO: MP3 decoder initialized[0m
+[0;32mI (937) AUDIO: Task started[0m
+[0;32mI (940) AUDIO: Initialized[0m
+[0;32mI (942) WIFI: Initializing WiFi module...[0m
+[0;32mI (948) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (950) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (953) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (958) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (965) WIFI: WiFi module initialized[0m
+[0;32mI (967) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (974) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1385) AS608: AS608 initialized successfully[0m
+[0;32mI (1790) FINGER: Library=300 Security=3[0m
+[0;32mI (1992) FINGER: Templates=2[0m
+[0;32mI (1992) APP: [FINGER] Ready[0m
+[0;32mI (1992) FINGER: Task started[0m
+[0;32mI (1992) FINGER: Initialized[0m
+[0;32mI (1993) APP: Initialized[0m
+[0;32mI (1994) APP: Starting...[0m
+[0;32mI (1996) AUDIO: Volume: 50%[0m
+[0;32mI (1997) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2005) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2007) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2017) WIFI: Starting WiFi station...[0m
+[0;32mI (2018) pp: pp rom version: e7ae62f[0m
+[0;32mI (2019) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2024) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2030) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2033) wifi:wifi certification version: v7.0[0m
+[0;32mI (2037) wifi:config NVS flash: disabled[0m
+[0;32mI (2041) wifi:config nano formatting: disabled[0m
+[0;32mI (2045) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2050) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2054) wifi:Init management short buffer num: 32[0m
+[0;32mI (2059) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2063) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2067) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2071) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2075) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2079) AUDIO: MP3 playback done[0m
+[0;32mI (2082) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2088) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2091) wifi_init: rx ba win: 6[0m
+[0;32mI (2093) wifi_init: accept mbox: 6[0m
+[0;32mI (2096) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2099) wifi_init: udp mbox: 6[0m
+[0;32mI (2105) wifi_init: tcp mbox: 6[0m
+[0;32mI (2105) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2108) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2111) wifi_init: tcp mss: 1440[0m
+[0;32mI (2114) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2118) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2123) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2165) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (2222) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2222) wifi:enable tsf[0m
+[0;32mI (2225) WIFI: Scanning for networks...[0m
+[0;32mI (2231) APP: State: INIT -> IDLE[0m
+[0;32mI (2232) APP: Started[0m
+[0;32mI (2232) webserver: Starting server on port 80[0m
+[0;32mI (2234) webserver: Server started[0m
+[0;32mI (2234) main_task: Returned from app_main()[0m
+[0;32mI (3369) AUDIO: MP3 playback done[0m
+[0;32mI (4636) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -34, Channel: 7, Authmode: 3[0m
+[0;32mI (4637) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (4639) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (5445) wifi:new:<7,0>, old:<1,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (5446) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (5449) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (5455) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (5563) wifi:connected with Dang khoa, aid = 23, channel 7, BW20, bssid = 26:0b:2a:11:b2:74[0m
+[0;32mI (5564) wifi:security: WPA2-PSK, phy: bgn, rssi: -35[0m
+[0;32mI (5566) wifi:pm start, type: 1[0m
+
+[0;32mI (5568) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (5577) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (5643) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5751) wifi:<ba-add>idx:0 (ifx:0, 26:0b:2a:11:b2:74), tid:0, ssn:3, winSize:64[0m
+[0;32mI (6797) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (6798) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (6798) WIFI: Connected to: Dang khoa[0m
+[0;32mI (10749) BUTTON: Button 0: DOUBLE_CLICK[0m
+[0;32mI (10750) APP: [BUTTON] Double click btn=0[0m
+[0;32mI (10750) APP: Starting WiFi configuration...[0m
+[0;32mI (10750) APP: State: IDLE -> CONFIG_WIFI[0m
+[0;32mI (10754) WIFI: Stopping WiFi...[0m
+[0;32mI (10757) wifi:state: run -> init (0x0)[0m
+[0;32mI (10761) wifi:pm stop, total sleep time: 4116741 us / 5192461 us[0m
+
+[0;32mI (10766) wifi:<ba-del>idx:0, tid:0[0m
+[0;32mI (10770) wifi:new:<7,0>, old:<7,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (10808) wifi:flush txq[0m
+[0;32mI (10808) wifi:stop sw txq[0m
+[0;32mI (10808) wifi:lmac stop hw txq[0m
+[0;32mI (10810) wifi:Deinit lldesc rx mblock:10[0m
+[0;32mI (10812) WIFI: Starting WiFi configuration AP...[0m
+[0;32mI (10813) pp: pp rom version: e7ae62f[0m
+[0;32mI (10816) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (10822) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (10838) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (10838) wifi:wifi certification version: v7.0[0m
+[0;32mI (10838) wifi:config NVS flash: enabled[0m
+[0;32mI (10839) wifi:config nano formatting: disabled[0m
+[0;32mI (10843) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (10848) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (10853) wifi:Init management short buffer num: 32[0m
+[0;32mI (10857) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (10861) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (10866) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (10870) wifi:Init static rx buffer num: 10[0m
+[0;32mI (10874) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (10879) wifi_init: rx ba win: 6[0m
+[0;32mI (10881) wifi_init: accept mbox: 6[0m
+[0;32mI (10884) wifi_init: tcpip mbox: 32[0m
+[0;32mI (10887) wifi_init: udp mbox: 6[0m
+[0;32mI (10890) wifi_init: tcp mbox: 6[0m
+[0;32mI (10893) wifi_init: tcp tx win: 5760[0m
+[0;32mI (10897) wifi_init: tcp rx win: 5760[0m
+[0;32mI (10900) wifi_init: tcp mss: 1440[0m
+[0;32mI (10903) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (10907) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (10911) DnsServer: Starting DNS server[0m
+[0;32mI (10919) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (10921) wifi:mode : sta (d0:cf:13:2f:5a:84) + softAP (d0:cf:13:2f:5a:85)[0m
+[0;32mI (10925) wifi:enable tsf[0m
+[0;32mI (10928) wifi:Total power save buffer number: 16[0m
+[0;32mI (10932) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (10936) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (10941) WifiConfigurationAp: Access Point started with SSID AS608--5A85[0m
+[1;31mE (10948) httpd: httpd_server_init: error in listen (112)[0m
+ESP_ERROR_CHECK failed: esp_err_t 0xffffffff (ESP_FAIL) at 0x42010851
+file: "./components/khoa_esp_wifi/wifi_configuration_ap.cc" line 227
+func: void WifiConfigurationAp::StartWebServer()
+expression: httpd_start(&server_, &config)
+
+abort() was called at PC 0x4037e60b on core 0
+
+
+Backtrace: 0x4037e64d:0x3fcea9d0 0x4037e615:0x3fcea9f0 0x40386db5:0x3fceaa10 0x4037e60b:0x3fceaa80 0x42010851:0x3fceaab0 0x420117f7:0x3fceac60 0x4200d7ff:0x3fceaca0 0x4200c089:0x3fcead10 0x4200c10d:0x3fcead30 0x420a9bbd:0x3fcead50 0x420a95b5:0x3fcead80 0x420a969d:0x3fceadc0 0x4037f3e9:0x3fceade0
+
+
+
+
+ELF file SHA256: d2d51c236
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037e7ed
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f34
+entry 0x403c8924
+[0;32mI (24) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Dec  5 2025 12:41:50[0m
+[0;32mI (24) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (28) boot: efuse block revision: v1.3[0m
+[0;32mI (31) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (35) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32s3: SPI Flash Size : 4MB[0m
+[0;32mI (43) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (50) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 002c0000[0m
+[0;32mI (75) boot:  3 storage          Unknown data     01 82 002d0000 00130000[0m
+[0;32mI (82) boot: End of partition table[0m
+[0;32mI (85) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=694a4h (431268) map[0m
+[0;32mI (169) esp_image: segment 1: paddr=000794cc vaddr=3fc9d400 size=050b8h ( 20664) load[0m
+[0;32mI (173) esp_image: segment 2: paddr=0007e58c vaddr=40374000 size=01a8ch (  6796) load[0m
+[0;32mI (175) esp_image: segment 3: paddr=00080020 vaddr=42000020 size=af764h (718692) map[0m
+[0;32mI (307) esp_image: segment 4: paddr=0012f78c vaddr=40375a8c size=17874h ( 96372) load[0m
+[0;32mI (328) esp_image: segment 5: paddr=00147008 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (338) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (338) boot: Disabling RNG early entropy source...[0m
+[0;32mI (349) esp_psram: Found 2MB PSRAM device[0m
+[0;32mI (349) esp_psram: Speed: 40MHz[0m
+[0;32mI (349) cpu_start: Multicore app[0m
+[0;32mI (768) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (777) cpu_start: Pro cpu start user code[0m
+[0;32mI (777) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (777) app_init: Application information:[0m
+[0;32mI (777) app_init: Project name:     AS608-ESP32s3[0m
+[0;32mI (781) app_init: App version:      1[0m
+[0;32mI (785) app_init: Compile time:     Dec  5 2025 12:40:45[0m
+[0;32mI (790) app_init: ELF file SHA256:  d2d51c236...[0m
+[0;32mI (794) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (799) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (802) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (806) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (810) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (817) heap_init: At 3FCA66A0 len 00043070 (268 KiB): RAM[0m
+[0;32mI (822) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (827) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (832) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (838) esp_psram: Adding pool of 2048K of PSRAM memory to heap allocator[0m
+[0;32mI (845) spi_flash: detected chip: generic[0m
+[0;32mI (847) spi_flash: flash io: dio[0m
+[0;32mI (851) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (857) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (864) main_task: Started on CPU0[0m
+[0;32mI (867) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (875) main_task: Calling app_main()[0m
+[0;32mI (878) MAIN: =========================================[0m
+[0;32mI (883) MAIN:   AS608 Fingerprint System[0m
+[0;32mI (887) MAIN:   ESP32-S3 | ESP-IDF v5.x[0m
+[0;32mI (890) MAIN: =========================================[0m
+[0;32mI (917) webserver: Initialized[0m
+[0;32mI (917) APP: Initializing...[0m
+[0;32mI (917) BUTTON: Initializing buttons...[0m
+[0;32mI (918) button: IoT Button Version: 3.5.0[0m
+[0;32mI (919) BUTTON: Button 0: GPIO8 initialized[0m
+[0;32mI (923) BUTTON: Buttons initialized[0m
+[0;32mI (926) AUDIO: Initializing...[0m
+[0;32mI (930) AUDIO: I2S: BCK=6, WS=7, DATA=5, rate=44100[0m
+[0;32mI (934) AUDIO: MP3 decoder initialized[0m
+[0;32mI (937) AUDIO: Task started[0m
+[0;32mI (939) AUDIO: Initialized[0m
+[0;32mI (942) WIFI: Initializing WiFi module...[0m
+[0;32mI (948) WIFI: Found 1 saved SSID(s) in NVS[0m
+[0;32mI (949) WIFI: Adding saved SSID: Dang khoa[0m
+[0;32mI (953) SsidManager: compare [Dang khoa:9] [Dang khoa:9][0m
+[0;33mW (958) SsidManager: SSID Dang khoa already exists, overwrite it[0m
+[0;32mI (965) WIFI: WiFi module initialized[0m
+[0;32mI (967) AS608: Initializing AS608 on UART1 (TX:12, RX:13, Baud:57600)[0m
+[0;32mI (974) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;32mI (1385) AS608: AS608 initialized successfully[0m
+[0;32mI (1790) FINGER: Library=300 Security=3[0m
+[0;32mI (1992) FINGER: Templates=2[0m
+[0;32mI (1992) APP: [FINGER] Ready[0m
+[0;32mI (1992) FINGER: Task started[0m
+[0;32mI (1992) FINGER: Initialized[0m
+[0;32mI (1993) APP: Initialized[0m
+[0;32mI (1994) APP: Starting...[0m
+[0;32mI (1996) AUDIO: Volume: 50%[0m
+[0;32mI (1997) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (2004) WIFI: Starting WiFi station...[0m
+[0;32mI (2005) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (2007) pp: pp rom version: e7ae62f[0m
+[0;32mI (2010) AUDIO: Changing sample rate: 44100 -> 32000 Hz[0m
+[0;32mI (2014) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (2024) wifi:wifi driver task: 3fcc2054, prio:23, stack:6656, core=0[0m
+[0;32mI (2030) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (2033) wifi:wifi certification version: v7.0[0m
+[0;32mI (2037) wifi:config NVS flash: disabled[0m
+[0;32mI (2041) wifi:config nano formatting: disabled[0m
+[0;32mI (2045) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (2050) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (2054) wifi:Init management short buffer num: 32[0m
+[0;32mI (2059) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (2063) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (2067) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (2071) wifi:Init static rx buffer num: 10[0m
+[0;32mI (2075) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (2080) wifi_init: rx ba win: 6[0m
+[0;32mI (2082) wifi_init: accept mbox: 6[0m
+[0;32mI (2085) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2088) wifi_init: udp mbox: 6[0m
+[0;32mI (2091) wifi_init: tcp mbox: 6[0m
+[0;32mI (2094) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2097) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2100) wifi_init: tcp mss: 1440[0m
+[0;32mI (2103) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2107) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2111) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (2152) wifi:mode : sta (d0:cf:13:2f:5a:84)[0m
+[0;32mI (2153) wifi:enable tsf[0m
+[0;32mI (2155) APP: State: INIT -> IDLE[0m
+[0;32mI (2156) WIFI: Scanning for networks...[0m
+[0;32mI (2157) APP: Started[0m
+[0;32mI (2157) webserver: Starting server on port 80[0m
+[0;32mI (2163) webserver: Server started[0m
+[0;32mI (2164) main_task: Returned from app_main()[0m
+[0;32mI (3279) AUDIO: MP3 playback done[0m
+[0;32mI (3279) AUDIO: Playing MP3: 20205 bytes[0m
+[0;32mI (3281) AUDIO: MP3 info: 32000 Hz, 1 ch, 128 kbps[0m
+[0;32mI (4539) AUDIO: MP3 playback done[0m
+[0;32mI (4568) WifiStation: Wait for next scan[0m
+[0;32mI (6989) WifiStation: Found AP: Dang khoa, BSSID: 26:0b:2a:11:b2:74, RSSI: -33, Channel: 7, Authmode: 3[0m
+[0;32mI (6989) WIFI: Connecting to: Dang khoa[0m
+[0;33mW (6991) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (9410) WifiStation: Reconnecting Dang khoa (attempt 1 / 5)[0m
+[0;32mI (11820) WifiStation: Reconnecting Dang khoa (attempt 2 / 5)[0m
+[0;32mI (12714) wifi:new:<7,0>, old:<1,0>, ap:<255,255>, sta:<7,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (12715) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (12717) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (12736) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (12833) wifi:connected with Dang khoa, aid = 23, channel 7, BW20, bssid = 26:0b:2a:11:b2:74[0m
+[0;32mI (12834) wifi:security: WPA2-PSK, phy: bgn, rssi: -31[0m
+[0;32mI (12836) wifi:pm start, type: 1[0m
+
+[0;32mI (12838) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (12847) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (12855) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (12897) wifi:<ba-add>idx:0 (ifx:0, 26:0b:2a:11:b2:74), tid:0, ssn:3, winSize:64[0m
+[0;32mI (14366) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (14367) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (14367) WIFI: Connected to: Dang khoa[0m
+[0;32mI (21270) webserver: WebSocket handshake[0m
+[0;32mI (21287) webserver: WS command: get_status[0m
+[0;32mI (21492) webserver: WS command: get_fingerprints[0m
+[0;33mW (23399) AS608: Failed to read data: -1/3[0m
+[0;33mW (23799) AS608: Response timeout or too short: 3 bytes[0m

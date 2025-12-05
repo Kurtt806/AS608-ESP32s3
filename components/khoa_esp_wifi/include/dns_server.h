@@ -1,0 +1,26 @@
+#ifndef _DNS_SERVER_H_
+#define _DNS_SERVER_H_
+
+#include <esp_netif_ip_addr.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+
+class DnsServer {
+public:
+    DnsServer();
+    ~DnsServer();
+
+    void Start(esp_ip4_addr_t gateway);
+    void Stop();
+
+private:
+    static constexpr int port_ = 53;
+    int fd_ = -1;
+    esp_ip4_addr_t gateway_{};
+    TaskHandle_t task_handle_ = nullptr;
+    volatile bool running_ = false;
+    
+    void Run();
+};
+
+#endif // _DNS_SERVER_H_
