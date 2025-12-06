@@ -1,6 +1,7 @@
 /**
  * @file main.c
  * @brief Application Entry Point
+ * @author KH OA
  */
 
 #include <stdio.h>
@@ -26,7 +27,7 @@ void app_main(void)
     ESP_LOGI(TAG, "  ESP32-S3 | ESP-IDF v5.x");
     ESP_LOGI(TAG, "=========================================");
 
-    /* Create default event loop */
+    /*Create default event loop */
     ESP_ERROR_CHECK(esp_event_loop_create_default());
     
     /* Initialize NVS */
@@ -38,7 +39,7 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    /* Initialize settings (must be after NVS) */
+    /* Initialize settings */
     ret = settings_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Settings init failed: %s", esp_err_to_name(ret));
@@ -46,7 +47,7 @@ void app_main(void)
         settings_dump();  /* Debug: print current settings */
     }
 
-    /* Initialize fingerprint metadata storage (must be after NVS) */
+    /* Initialize fingerprint metadata storage */
     ret = finger_meta_init();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));

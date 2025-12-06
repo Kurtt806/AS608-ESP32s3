@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "AS608-ESP32s3",
-    "project_version":    "1.0.0",
+    "project_version":    "dev1.0.3",
     "project_path":       "D:/ESP-IDF/AS608-ESP32s3",
     "idf_path":           "C:/esp/v5.5.1/esp-idf",
     "build_dir":          "D:/ESP-IDF/AS608-ESP32s3/build",
