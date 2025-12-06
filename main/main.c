@@ -14,6 +14,8 @@
 #include "settings/settings.h"
 #include "app/app.h"
 #include "webserver/webserver.h"
+#include "finger/finger_meta.h"
+#include "ota/ota.h"
 
 static const char *TAG = "MAIN";
 
@@ -42,6 +44,18 @@ void app_main(void)
         ESP_LOGE(TAG, "Settings init failed: %s", esp_err_to_name(ret));
     } else {
         settings_dump();  /* Debug: print current settings */
+    }
+
+    /* Initialize fingerprint metadata storage (must be after NVS) */
+    ret = finger_meta_init();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));
+    }
+
+    /* Initialize OTA module */
+    ret = ota_init();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "OTA init failed: %s", esp_err_to_name(ret));
     }
 
     /* Initialize web server */

@@ -4,6 +4,9 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.5)
 
+# Firmware version - change this when releasing new version
+set(PROJECT_VER "1.0.0")
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
 project(AS608-ESP32s3)

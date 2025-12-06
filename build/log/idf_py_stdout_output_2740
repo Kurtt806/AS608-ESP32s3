@@ -1,0 +1,41 @@
+Command: C:\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\esp\v5.5.1\esp-idf\tools/idf_monitor.py -p COM19 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 D:\ESP-IDF\AS608-ESP32s3\build\AS608-ESP32s3.elf D:\ESP-IDF\AS608-ESP32s3\build\bootloader\bootloader.elf --force-color -m 'C:\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\esp\v5.5.1\esp-idf\tools\idf.py' '-p' 'COM19'
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037ab92
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f8c
+entry 0x403c8924
+[0;32mI (381) esp_image: segment 4: paddr=0016980c vaddr=40377d10 sizeI (6309) esp_netif_handlers: sta ip: 192.168.1.242, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (6310) WifiStation: Got IP: 192.168.1.242[0m
+[0;32mI (6310) WIFI: Connected to: Dang khoa[0m
+[0;32mI (12671) webserver: WebSocket client connected[0m
+[0;32mI (25078) webserver: OTA upload started, content length: 1437536[0m
+[0;32mI (25078) OTA: Writing to partition: ota_1[0m
+[0;32mI (31364) OTA: Progress: 10% (145006 / 1437536 bytes)[0m
+[0;32mI (31928) OTA: Progress: 20% (287566 / 1437536 bytes)[0m
+[0;32mI (32514) OTA: Progress: 30% (431566 / 1437536 bytes)[0m
+[0;32mI (33085) OTA: Progress: 40% (576782 / 1437536 bytes)[0m
+[0;32mI (33657) OTA: Progress: 50% (722222 / 1437536 bytes)[0m
+[0;32mI (34223) OTA: Progress: 60% (863342 / 1437536 bytes)[0m
+[0;32mI (34820) OTA: Progress: 70% (1008782 / 1437536 bytes)[0m
+[0;32mI (35426) OTA: Progress: 80% (1151566 / 1437536 bytes)[0m
+[0;32mI (36049) OTA: Progress: 90% (1294126 / 1437536 bytes)[0m
+[0;32mI (36692) OTA: Progress: 100% (1437536 / 1437536 bytes)[0m
+[0;32mI (36695) esp_image: segment 0: paddr=001a0020 vaddr=3c0d0020 size=77230h (487984) map[0m
+[0;32mI (36749) esp_image: segment 1: paddr=00217258 vaddr=3fc9d400 size=050d8h ( 20696) [0m
+[0;32mI (36752) esp_image: segment 2: paddr=0021c338 vaddr=40374000 size=03ce0h ( 15584) [0m
+[0;32mI (36755) esp_image: segment 3: paddr=00220020 vaddr=42000020 size=c9810h (825360) map[0m
+[0;32mI (36851) esp_image: segment 4: paddr=002e9838 vaddr=40377ce0 size=156d0h ( 87760) [0m
+[0;32mI (36861) esp_image: segment 5: paddr=002fef10 vaddr=50000000 size=00020h (    32) [0m
+[0;32mI (36864) esp_image: segment 0: paddr=001a0020 vaddr=3c0d0020 size=77230h (487984) map[0m
+[0;32mI (36919) esp_image: segment 1: paddr=00217258 vaddr=3fc9d400 size=050d8h ( 20696) [0m
+[0;32mI (36922) esp_image: segment 2: paddr=0021c338 vaddr=40374000 size=03ce0h ( 15584) [0m
+[0;32mI (36925) esp_image: segment 3: paddr=00220020 vaddr=42000020 size=c9810h (825360) map[0m
+[0;32mI (37020) esp_image: segment 4: paddr=002e9838 vaddr=40377ce0 size=156d0h ( 87760) [0m
+[0;32mI (37031) esp_image: segment 5: paddr=002fef10 vaddr=50000000 size=00020h (    32) [0m
+[0;32mI (37071) OTA: OTA update complete. Reboot to apply.[0m
+[0;32mI (61800) webserver: WebSocket client connected[0m

@@ -5,6 +5,7 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   file(REMOVE_RECURSE
   "AS608-ESP32s3.bin"
   "AS608-ESP32s3.map"
+  "api.js.S"
   "app.js.S"
   "boot.mp3.S"
   "bootloader\\bootloader.bin"
@@ -31,6 +32,7 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "style.css.S"
   "wifi_configuration.html.S"
   "wifi_configuration_done.html.S"
+  "ws.js.S"
   "x509_crt_bundle.S"
   )
 endif()

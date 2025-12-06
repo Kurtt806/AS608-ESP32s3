@@ -13,6 +13,8 @@
 #include "../button/button_events.h"
 #include "../audio/audio.h"
 #include "../wifi/wifi.h"
+#include "../webserver/webserver.h"
+#include "../finger/finger_meta.h"
 
 #include <stdbool.h>
 #include "esp_log.h"
@@ -30,6 +32,7 @@ ESP_EVENT_DEFINE_BASE(APP_EVENT);
  * ============================================================================ */
 static app_state_t s_state = APP_STATE_INIT;
 static int16_t s_enroll_id = -1;
+static int16_t s_delete_id = -1;  /* ID being deleted */
 static esp_event_handler_instance_t s_finger_handler = NULL;
 static esp_event_handler_instance_t s_button_handler = NULL;
 
@@ -95,21 +98,25 @@ static void on_finger_event(void *arg, esp_event_base_t base, int32_t id, void *
     case FINGER_EVT_READY:
         ESP_LOGI(TAG, "[FINGER] Ready");
         audio_play(SOUND_READY);
+        finger_send_event("idle", -1);
         break;
 
     case FINGER_EVT_ERROR:
         ESP_LOGE(TAG, "[FINGER] Error");
         audio_play(SOUND_ERROR);
         set_state(APP_STATE_ERROR);
+        webserver_broadcast_error("Sensor error");
         break;
 
     case FINGER_EVT_DETECTED:
         ESP_LOGI(TAG, "[FINGER] Detected");
         audio_play(SOUND_FINGER_DETECTED);
+        finger_send_event("finger_detected", -1);
         break;
 
     case FINGER_EVT_REMOVED:
         ESP_LOGI(TAG, "[FINGER] Removed");
+        finger_send_event("remove_finger", -1);
         break;
 
     case FINGER_EVT_MATCH:
@@ -117,6 +124,11 @@ static void on_finger_event(void *arg, esp_event_base_t base, int32_t id, void *
         finger_match_data_t *m = (finger_match_data_t *)data;
         ESP_LOGI(TAG, "[FINGER] Match id=%d score=%u", m->finger_id, m->score);
         audio_play(SOUND_MATCH_OK);
+        
+        /* Record match statistics */
+        finger_meta_record_match(m->finger_id);
+        
+        webserver_broadcast_match(m->finger_id, m->score);
         set_state(APP_STATE_IDLE);
         break;
     }
@@ -124,6 +136,7 @@ static void on_finger_event(void *arg, esp_event_base_t base, int32_t id, void *
     case FINGER_EVT_NO_MATCH:
         ESP_LOGI(TAG, "[FINGER] No match");
         audio_play(SOUND_MATCH_FAIL);
+        webserver_broadcast_match(-1, 0);
         set_state(APP_STATE_IDLE);
         break;
 
@@ -133,31 +146,46 @@ static void on_finger_event(void *arg, esp_event_base_t base, int32_t id, void *
         s_enroll_id = e->finger_id;
         ESP_LOGI(TAG, "[FINGER] Enroll start id=%d", s_enroll_id);
         audio_play(SOUND_ENROLL_START);
+        finger_send_event("enrolling", -1);
         break;
     }
 
     case FINGER_EVT_ENROLL_STEP1:
         ESP_LOGI(TAG, "[FINGER] Enroll step1 OK - remove finger");
         audio_play(SOUND_ENROLL_STEP);
+        webserver_broadcast_enroll_step(1);
+        finger_send_event("remove_finger", -1);
         set_state(APP_STATE_ENROLL_STEP2);
         break;
 
     case FINGER_EVT_ENROLL_STEP2:
         ESP_LOGI(TAG, "[FINGER] Enroll step2 OK");
         audio_play(SOUND_ENROLL_STEP);
+        webserver_broadcast_enroll_step(2);
+        finger_send_event("saving", -1);
         set_state(APP_STATE_ENROLL_STORE);
         break;
 
     case FINGER_EVT_ENROLL_OK:
-        ESP_LOGI(TAG, "[FINGER] Enroll success");
+    {
+        finger_enroll_data_t *e = (finger_enroll_data_t *)data;
+        int enrolled_id = e ? e->finger_id : s_enroll_id;
+        ESP_LOGI(TAG, "[FINGER] Enroll success id=%d", enrolled_id);
         audio_play(SOUND_ENROLL_OK);
+        
+        /* Create metadata entry for new fingerprint (auto-generated name) */
+        finger_meta_create(enrolled_id, NULL);
+        
+        webserver_broadcast_enroll_ok(enrolled_id);
         s_enroll_id = -1;
         set_state(APP_STATE_IDLE);
         break;
+    }
 
     case FINGER_EVT_ENROLL_FAIL:
         ESP_LOGE(TAG, "[FINGER] Enroll fail");
         audio_play(SOUND_ENROLL_FAIL);
+        finger_send_event("store_fail", -1);
         s_enroll_id = -1;
         set_state(APP_STATE_IDLE);
         break;
@@ -165,25 +193,42 @@ static void on_finger_event(void *arg, esp_event_base_t base, int32_t id, void *
     case FINGER_EVT_ENROLL_CANCEL:
         ESP_LOGI(TAG, "[FINGER] Enroll cancelled");
         audio_play(SOUND_BEEP);
+        finger_send_event("idle", -1);
         s_enroll_id = -1;
         set_state(APP_STATE_IDLE);
         break;
 
     case FINGER_EVT_DELETE_OK:
-        ESP_LOGI(TAG, "[FINGER] Delete OK");
+        ESP_LOGI(TAG, "[FINGER] Delete OK id=%d", s_delete_id);
         audio_play(SOUND_DELETE_OK);
+        
+        /* Delete metadata for this fingerprint */
+        if (s_delete_id >= 0) {
+            finger_meta_delete_name(s_delete_id);
+        }
+        
+        webserver_broadcast_delete(s_delete_id);
+        s_delete_id = -1;
         set_state(APP_STATE_IDLE);
         break;
 
     case FINGER_EVT_DELETE_FAIL:
-        ESP_LOGE(TAG, "[FINGER] Delete fail");
+        ESP_LOGE(TAG, "[FINGER] Delete fail id=%d", s_delete_id);
         audio_play(SOUND_ERROR);
+        webserver_broadcast_error("Delete failed");
+        s_delete_id = -1;
         set_state(APP_STATE_IDLE);
         break;
 
     case FINGER_EVT_DELETE_ALL_OK:
         ESP_LOGI(TAG, "[FINGER] Delete all OK");
         audio_play(SOUND_DELETE_OK);
+        
+        /* Clear all metadata */
+        finger_meta_clear_all();
+        
+        webserver_broadcast_delete(-1);
+        s_delete_id = -1;
         set_state(APP_STATE_IDLE);
         break;
 
@@ -378,6 +423,7 @@ esp_err_t app_delete_finger(int16_t finger_id)
         return ESP_ERR_INVALID_STATE;
     }
 
+        s_delete_id = finger_id;  /* Save ID being deleted */
     set_state(APP_STATE_DELETING);
     if (finger_id < 0)
     {

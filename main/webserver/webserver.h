@@ -2,7 +2,8 @@
  * @file webserver.h
  * @brief Web server module for AS608 control panel
  *
- * Provides HTTP server with WebSocket for realtime device control
+ * Provides HTTP server with WebSocket for realtime device control.
+ * Uses event-based WebSocket communication for real-time updates.
  */
 
 #ifndef WEBSERVER_H
@@ -13,6 +14,31 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/* ============================================================================
+ * Event Types for WebSocket
+ * ============================================================================ */
+typedef enum {
+    WS_EVENT_IDLE = 0,
+    WS_EVENT_FINGER_DETECTED,
+    WS_EVENT_ENROLL_STEP1_OK,
+    WS_EVENT_ENROLL_STEP2_OK,
+    WS_EVENT_REMOVE_FINGER,
+    WS_EVENT_SAVING,
+    WS_EVENT_STORE_OK,
+    WS_EVENT_STORE_FAIL,
+    WS_EVENT_MATCH,
+    WS_EVENT_NO_MATCH,
+    WS_EVENT_DELETE_OK,
+    WS_EVENT_CLEAR_OK,
+    WS_EVENT_ERROR,
+    WS_EVENT_ENROLLING,
+    WS_EVENT_SEARCHING,
+} ws_event_type_t;
+
+/* ============================================================================
+ * Initialization & Control
+ * ============================================================================ */
 
 /**
  * @brief Initialize the web server module
@@ -37,16 +63,25 @@ void webserver_stop(void);
  */
 bool webserver_is_running(void);
 
+/* ============================================================================
+ * WebSocket Event Broadcasting
+ * ============================================================================ */
+
 /**
- * @brief Broadcast event to all WebSocket clients
- * @param event Event name
- * @param message Optional message
+ * @brief Send event to all WebSocket clients
+ * @param event Event name string
+ * @param value Optional value (use -1 if not applicable)
+ * 
+ * Example usage:
+ *   finger_send_event("finger_detected", 0);
+ *   finger_send_event("enroll_step1_ok", 0);
+ *   finger_send_event("match", matched_id);
  */
-void webserver_broadcast_event(const char *event, const char *message);
+void finger_send_event(const char *event, int value);
 
 /**
  * @brief Broadcast state change to all clients
- * @param state New state string
+ * @param state New state string (idle, enrolling, searching, etc.)
  */
 void webserver_broadcast_state(const char *state);
 
@@ -58,8 +93,8 @@ void webserver_broadcast_state(const char *state);
 void webserver_broadcast_match(int id, int score);
 
 /**
- * @brief Broadcast enrollment progress
- * @param step Current step (1-3)
+ * @brief Broadcast enrollment step progress
+ * @param step Current step (1 or 2)
  */
 void webserver_broadcast_enroll_step(int step);
 
@@ -74,6 +109,23 @@ void webserver_broadcast_enroll_ok(int id);
  * @param id Deleted fingerprint ID (-1 for all)
  */
 void webserver_broadcast_delete(int id);
+
+/**
+ * @brief Broadcast error event
+ * @param message Error message
+ */
+void webserver_broadcast_error(const char *message);
+
+/* ============================================================================
+ * Legacy API (for backward compatibility)
+ * ============================================================================ */
+
+/**
+ * @brief Broadcast event with optional message
+ * @param event Event name
+ * @param message Optional message
+ */
+void webserver_broadcast_event(const char *event, const char *message);
 
 #ifdef __cplusplus
 }

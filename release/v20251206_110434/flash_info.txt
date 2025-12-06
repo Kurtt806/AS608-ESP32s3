@@ -1,0 +1,19 @@
+Firmware Export Info
+========================================
+
+Project: AS608-ESP32s3
+Version: 20251206_110434
+Target: esp32s3
+IDF Version: unknown
+Export Date: 2025-12-06 11:04:34
+
+Flash Commands:
+--------------
+Full Flash:
+  esptool.py -p COMx -b 460800 --before default_reset --after hard_reset write_flash
+    0x0 bootloader_v20251206_110434.bin
+    0x8000 partition-table_v20251206_110434.bin
+    0x20000 firmware_v20251206_110434.bin
+
+OTA Update (via web interface):
+  Upload: ota_update_v20251206_110434.bin
