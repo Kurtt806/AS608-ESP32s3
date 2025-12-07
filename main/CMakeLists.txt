@@ -1,11 +1,4 @@
 # Web assets - includes new ws.js and api.js
-set(WEB_ASSETS
-    "webserver/assets/index.html"
-    "webserver/assets/style.css"
-    "webserver/assets/app.js"
-    "webserver/assets/ws.js"
-    "webserver/assets/api.js"
-)
 
 idf_component_register(
     SRCS 
@@ -29,7 +22,7 @@ idf_component_register(
         "settings"
         "ota"
     REQUIRES 
-        as608 
+        khoa_as608 
         nvs_flash 
         esp_event
         espressif__button

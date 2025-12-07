@@ -161,7 +161,7 @@ D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/touch_element/libtouch_element.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/usb/libusb.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/json/libjson.a
-D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/as608/libas608.a
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_as608/libkhoa_as608.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__button/libespressif__button.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_esp_wifi/libkhoa_esp_wifi.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/libchmorgan__esp-libhelix-mp3.a
@@ -169,7 +169,7 @@ D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/libkhoa_audio.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/libchmorgan__esp-libhelix-mp3.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__led_strip/libespressif__led_strip.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/main/libmain.a
-D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/as608/libas608.a
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_as608/libkhoa_as608.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__button/libespressif__button.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_esp_wifi/libkhoa_esp_wifi.a
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/libkhoa_audio.a

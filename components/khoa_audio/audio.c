@@ -8,8 +8,15 @@
 
 #include "audio.h"
 #include "audio_events.h"
-#include "../../main/common/config.h"
-#include "../../main/settings/settings.h"
+
+/* Configuration defines moved here to avoid dependency on main/ */
+#define CFG_I2S_WS                  GPIO_NUM_7
+#define CFG_I2S_BCK                 GPIO_NUM_6
+#define CFG_I2S_DATA                GPIO_NUM_5
+#define CFG_AUDIO_TASK_STACK        16384
+#define CFG_AUDIO_TASK_PRIORITY     3
+#define CFG_AUDIO_QUEUE_SIZE        8
+#define CFG_AUDIO_SAMPLE_RATE       44100
 
 #include "esp_log.h"
 #include "driver/i2s_std.h"
@@ -441,8 +448,6 @@ void audio_stop(void) {
 
 void audio_set_volume(uint8_t volume) {
     s_volume = (volume > 100) ? 100 : volume;
-    /* Sync to settings */
-    settings_set_volume(s_volume);
     ESP_LOGI(TAG, "Volume: %d%%", s_volume);
 }
 
@@ -451,6 +456,7 @@ uint8_t audio_get_volume(void) {
 }
 
 void audio_load_settings(void) {
-    s_volume = settings_get_volume();
-    ESP_LOGI(TAG, "Loaded volume from settings: %d%%", s_volume);
+    /* Default volume, since settings are not available in component */
+    s_volume = 20;
+    ESP_LOGI(TAG, "Loaded default volume: %d%%", s_volume);
 }
