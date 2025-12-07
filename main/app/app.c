@@ -11,7 +11,7 @@
 #include "../finger/finger_events.h"
 #include "../button/button.h"
 #include "../button/button_events.h"
-#include "../audio/audio.h"
+#include "audio.h"
 #include "../wifi/wifi.h"
 #include "../webserver/webserver.h"
 #include "../finger/finger_meta.h"

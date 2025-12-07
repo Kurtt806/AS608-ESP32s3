@@ -909,6 +909,13 @@ D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/CMakeFiles/lis
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/CMakeFiles/install.dir
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/CMakeFiles/install/local.dir
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/chmorgan__esp-libhelix-mp3/CMakeFiles/install/strip.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/__idf_khoa_audio.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/edit_cache.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/rebuild_cache.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/list_install_components.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/install.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/install/local.dir
+D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/khoa_audio/CMakeFiles/install/strip.dir
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__led_strip/CMakeFiles/__idf_espressif__led_strip.dir
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__led_strip/CMakeFiles/edit_cache.dir
 D:/ESP-IDF/AS608-ESP32s3/build/esp-idf/espressif__led_strip/CMakeFiles/rebuild_cache.dir

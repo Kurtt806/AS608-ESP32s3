@@ -12,7 +12,7 @@
 #include "../common/config.h"
 #include "../finger/finger.h"
 #include "../finger/finger_meta.h"
-#include "../audio/audio.h"
+#include "audio.h"
 #include "../app/app.h"
 #include "../ota/ota.h"
 

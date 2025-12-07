@@ -1,5 +1,3 @@
-file(GLOB SOUND_FILES "audio/sounds/*.mp3")
-
 # Web assets - includes new ws.js and api.js
 set(WEB_ASSETS
     "webserver/assets/index.html"
@@ -16,7 +14,6 @@ idf_component_register(
         "finger/finger.c"
         "finger/finger_meta.c"
         "button/button.c"
-        "audio/audio.c"
         "wifi/wifi.cc"
         "webserver/webserver.c"
         "settings/settings.c"
@@ -27,7 +24,6 @@ idf_component_register(
         "app"
         "finger"
         "button"
-        "audio"
         "wifi"
         "webserver"
         "settings"
@@ -44,5 +40,6 @@ idf_component_register(
         json
         app_update
         esp_https_ota
-    EMBED_FILES ${SOUND_FILES} ${WEB_ASSETS}
+        khoa_audio
+    EMBED_FILES ${WEB_ASSETS}
 )

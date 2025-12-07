@@ -1,4 +1,4 @@
-/* * Data converted from D:/ESP-IDF/AS608-ESP32s3/main/audio/sounds/match_fail.mp3
+/* * Data converted from D:/ESP-IDF/AS608-ESP32s3/components/khoa_audio/sounds/match_fail.mp3
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

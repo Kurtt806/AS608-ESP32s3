@@ -27,12 +27,17 @@ void app_main(void)
     ESP_LOGI(TAG, "  ESP32-S3 | ESP-IDF v5.x");
     ESP_LOGI(TAG, "=========================================");
 
+    // Bỏ ghi chú dòng bên dưới để tắt tất cả nhật ký ESP
+    //  esp_log_level_set("*", ESP_LOG_NONE);
+    esp_log_level_set("AUDIO", ESP_LOG_NONE);
+
     /*Create default event loop */
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-    
+
     /* Initialize NVS */
     esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
+    {
         ESP_LOGW(TAG, "Erasing NVS flash");
         ESP_ERROR_CHECK(nvs_flash_erase());
         ret = nvs_flash_init();
@@ -41,40 +46,41 @@ void app_main(void)
 
     /* Initialize settings */
     ret = settings_init();
-    if (ret != ESP_OK) {
+    if (ret != ESP_OK)
+    {
         ESP_LOGE(TAG, "Settings init failed: %s", esp_err_to_name(ret));
-    } else {
-        settings_dump();  /* Debug: print current settings */
+    }
+    else
+    {
+        settings_dump(); /* Debug: print current settings */
     }
 
     /* Initialize fingerprint metadata storage */
     ret = finger_meta_init();
-    if (ret != ESP_OK) {
+    if (ret != ESP_OK)
+    {
         ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));
     }
 
     /* Initialize OTA module */
     ret = ota_init();
-    if (ret != ESP_OK) {
+    if (ret != ESP_OK)
+    {
         ESP_LOGE(TAG, "OTA init failed: %s", esp_err_to_name(ret));
     }
 
-    /* Initialize web server */
-    webserver_init();
-
     /* Initialize and start application */
     ret = app_init();
-    if (ret != ESP_OK) {
+    if (ret != ESP_OK)
+    {
         ESP_LOGE(TAG, "App init failed: %s", esp_err_to_name(ret));
         return;
     }
 
-
-
     app_start();
-    
+
+    /* Initialize web server */
+    webserver_init();
     /* Start web server after app is running */
     webserver_start();
-
-
 }

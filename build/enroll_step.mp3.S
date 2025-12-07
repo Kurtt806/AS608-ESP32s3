@@ -1,4 +1,4 @@
-/* * Data converted from D:/ESP-IDF/AS608-ESP32s3/main/audio/sounds/enroll_step.mp3
+/* * Data converted from D:/ESP-IDF/AS608-ESP32s3/components/khoa_audio/sounds/enroll_step.mp3
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)
