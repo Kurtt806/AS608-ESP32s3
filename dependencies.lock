@@ -33,16 +33,6 @@ dependencies:
       registry_url: https://components.espressif.com
       type: service
     version: 0.5.3
-  espressif/led_strip:
-    component_hash: f0d1b7f93eb3ee57bcfd220656176b0b5616e1947f89ed44364555cf910c4840
-    dependencies:
-    - name: idf
-      require: private
-      version: '>=5.0'
-    source:
-      registry_url: https://components.espressif.com/
-      type: service
-    version: 3.0.2
   idf:
     source:
       type: idf
@@ -50,7 +40,6 @@ dependencies:
 direct_dependencies:
 - chmorgan/esp-libhelix-mp3
 - espressif/button
-- espressif/led_strip
-manifest_hash: e351b449f6529ace6577911e91f0373d18fbf0ac6b9c0911cc09f445bed63724
+manifest_hash: f91718c240050959f65d2eb3c1405dc72983526fda9f6d88ce2448e295b3d499
 target: esp32s3
 version: 2.0.0

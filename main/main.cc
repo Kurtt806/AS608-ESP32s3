@@ -15,7 +15,7 @@
 
 static const char *TAG = "MAIN";
 
-void app_main(void)
+extern "C" void app_main(void)
 {
     ESP_LOGI(TAG, "=========================================");
     ESP_LOGI(TAG, "  AS608 Fingerprint System");
@@ -38,22 +38,4 @@ void app_main(void)
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
-
-    /* Initialize fingerprint metadata storage */
-    ret = finger_meta_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));
-    }
-
-    /* Initialize and start application */
-    ret = app_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "App init failed: %s", esp_err_to_name(ret));
-        return;
-    }
-
-    app_start();
-
 }
