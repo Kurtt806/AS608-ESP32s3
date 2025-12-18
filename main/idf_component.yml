@@ -5,3 +5,4 @@ dependencies:
   chmorgan/esp-libhelix-mp3:
     version: "*"
     git: https://github.com/chmorgan/esp-libhelix-mp3.git
+  kurtt806/esp_wifi_connect: ^1.0.1

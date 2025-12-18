@@ -5,8 +5,7 @@
 
 #include "wifi.h"
 #include "../common/config.h"
-#include "wifi_station.h"
-#include "wifi_configuration_ap.h"
+#include "wifi_manager.h"
 #include "ssid_manager.h"
 
 #include "esp_log.h"
@@ -31,10 +30,13 @@ esp_err_t wifi_module_init(void)
         return ret;
     }
 
-    /* Load saved SSIDs from NVS and add to WifiStation */
-    auto& ssid_manager = SsidManager::GetInstance();
-    auto& wifi_station = WifiStation::GetInstance();
+    /* Initialize WifiManager */
+    auto& wifi_manager = WifiManager::GetInstance();
+    WifiManagerConfig config;
+    wifi_manager.Initialize(config);
 
+    /* Load saved SSIDs from NVS */
+    auto& ssid_manager = SsidManager::GetInstance();
     const auto& ssid_list = ssid_manager.GetSsidList();
     ESP_LOGI(TAG, "Found %d saved SSID(s) in NVS", ssid_list.size());
     
@@ -42,22 +44,29 @@ esp_err_t wifi_module_init(void)
         ESP_LOGW(TAG, "No saved WiFi networks. Use WiFi config mode (double-click BOOT) to add.");
     }
     
-    for (const auto& item : ssid_list) {
-        ESP_LOGI(TAG, "Adding saved SSID: %s", item.ssid.c_str());
-        wifi_station.AddAuth(std::string(item.ssid), std::string(item.password));
-    }
+    // Note: WifiManager handles SSID management internally
 
     /* Set up callbacks */
-    wifi_station.OnConnect([](const std::string& ssid) {
-        ESP_LOGI(TAG, "Connecting to: %s", ssid.c_str());
-    });
-
-    wifi_station.OnConnected([](const std::string& ssid) {
-        ESP_LOGI(TAG, "Connected to: %s", ssid.c_str());
-    });
-
-    wifi_station.OnScanBegin([]() {
-        ESP_LOGI(TAG, "Scanning for networks...");
+    wifi_manager.SetEventCallback([&wifi_manager](WifiEvent event) {
+        switch (event) {
+            case WifiEvent::Connecting:
+                ESP_LOGI(TAG, "Connecting to WiFi...");
+                break;
+            case WifiEvent::Connected:
+                ESP_LOGI(TAG, "Connected to WiFi: %s", wifi_manager.GetSsid().c_str());
+                break;
+            case WifiEvent::Disconnected:
+                ESP_LOGI(TAG, "Disconnected from WiFi");
+                break;
+            case WifiEvent::ConfigModeEnter:
+                ESP_LOGI(TAG, "Entered configuration mode");
+                break;
+            case WifiEvent::ConfigModeExit:
+                ESP_LOGI(TAG, "Exited configuration mode");
+                break;
+            default:
+                break;
+        }
     });
 
     ESP_LOGI(TAG, "WiFi module initialized");
@@ -76,51 +85,67 @@ void wifi_module_start(void)
     }
     
     ESP_LOGI(TAG, "Starting WiFi station...");
-    WifiStation::GetInstance().Start();
+    auto& wifi_manager = WifiManager::GetInstance();
+    wifi_manager.StartStation();
 }
 
 void wifi_module_stop(void)
 {
     ESP_LOGI(TAG, "Stopping WiFi...");
-    WifiStation::GetInstance().Stop();
+    auto& wifi_manager = WifiManager::GetInstance();
+    wifi_manager.StopStation();
+    wifi_manager.StopConfigAp();
 }
 
 bool wifi_module_is_connected(void)
 {
-    return WifiStation::GetInstance().IsConnected();
+    auto& wifi_manager = WifiManager::GetInstance();
+    return wifi_manager.IsConnected();
 }
 
 bool wifi_module_wait_connected(int timeout_ms)
 {
-    return WifiStation::GetInstance().WaitForConnected(timeout_ms);
+    auto& wifi_manager = WifiManager::GetInstance();
+    // Note: The new API might not have WaitForConnected, so we'll implement a simple wait
+    int elapsed = 0;
+    while (elapsed < timeout_ms) {
+        if (wifi_manager.IsConnected()) {
+            return true;
+        }
+        vTaskDelay(pdMS_TO_TICKS(100));
+        elapsed += 100;
+    }
+    return false;
 }
 
 void wifi_module_start_config_ap(void)
 {
     ESP_LOGI(TAG, "Starting WiFi configuration AP...");
     
-    auto& config_ap = WifiConfigurationAp::GetInstance();
-    config_ap.SetSsidPrefix(CFG_WIFI_AP_PREFIX);
-    config_ap.SetLanguage(CFG_WIFI_LANGUAGE);
-    config_ap.Start();
+    auto& wifi_manager = WifiManager::GetInstance();
+    wifi_manager.StartConfigAp();
     
-    ESP_LOGI(TAG, "Configuration AP started. URL: %s", config_ap.GetWebServerUrl().c_str());
+    ESP_LOGI(TAG, "Configuration AP started. URL: %s", wifi_manager.GetApWebUrl().c_str());
 }
 
 void wifi_module_stop_config_ap(void)
 {
     ESP_LOGI(TAG, "Stopping WiFi configuration AP...");
-    WifiConfigurationAp::GetInstance().Stop();
+    auto& wifi_manager = WifiManager::GetInstance();
+    wifi_manager.StopConfigAp();
 }
 
 int8_t wifi_module_get_rssi(void)
 {
-    return WifiStation::GetInstance().GetRssi();
+    auto& wifi_manager = WifiManager::GetInstance();
+    return wifi_manager.GetRssi();
 }
 
 void wifi_module_set_power_save(bool enabled)
 {
-    WifiStation::GetInstance().SetPowerSaveMode(enabled);
+    auto& wifi_manager = WifiManager::GetInstance();
+    WifiPowerSaveLevel level = enabled ? WifiPowerSaveLevel::LOW_POWER : WifiPowerSaveLevel::PERFORMANCE;
+    wifi_manager.SetPowerSaveLevel(level);
 }
 
 } // extern "C"

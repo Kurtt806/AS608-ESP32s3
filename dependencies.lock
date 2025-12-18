@@ -47,10 +47,21 @@ dependencies:
     source:
       type: idf
     version: 5.5.1
+  kurtt806/esp_wifi_connect:
+    component_hash: 3a1fb01b2ffed52306e2beb9aca5ca0eb67e2c2b18006abe0c775ad7e19c2389
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.3'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.0.1
 direct_dependencies:
 - chmorgan/esp-libhelix-mp3
 - espressif/button
 - espressif/led_strip
-manifest_hash: e351b449f6529ace6577911e91f0373d18fbf0ac6b9c0911cc09f445bed63724
+- kurtt806/esp_wifi_connect
+manifest_hash: c60a92a106b690d7d5699809bc9c71be5c78ee7aa94ae68e369f1e862ad8fc4b
 target: esp32s3
 version: 2.0.0

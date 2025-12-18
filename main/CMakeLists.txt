@@ -22,6 +22,5 @@ idf_component_register(
         espressif__button
         driver
         esp_adc
-        khoa_esp_wifi
         khoa_audio
 )
