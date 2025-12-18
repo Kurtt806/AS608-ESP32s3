@@ -394,3 +394,56 @@ esp_err_t as608_get_template_count(uint16_t *count) {
     
     return ESP_OK;
 }
+
+esp_err_t as608_enroll(int id) {
+    ESP_LOGI(TAG, "Starting enrollment process for ID %d", id);
+    
+    // Step 1: First image capture
+    ESP_LOGI(TAG, "Step 1: Place finger on sensor for first scan...");
+    esp_err_t ret = as608_read_image();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to capture first image: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    // Step 2: Generate char file 1
+    ret = as608_gen_char(1);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to generate char file 1: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    vTaskDelay(pdMS_TO_TICKS(1000)); // Brief pause
+    
+    // Step 3: Second image capture
+    ESP_LOGI(TAG, "Step 2: Place same finger again for second scan...");
+    ret = as608_read_image();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to capture second image: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    // Step 4: Generate char file 2
+    ret = as608_gen_char(2);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to generate char file 2: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    // Step 5: Combine char files into template
+    ret = as608_reg_model();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to create template: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    // Step 6: Store template
+    ret = as608_store(id);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to store template: %s", esp_err_to_name(ret));
+        return ret;
+    }
+    
+    ESP_LOGI(TAG, "Enrollment completed successfully for ID %d", id);
+    return ESP_OK;
+}

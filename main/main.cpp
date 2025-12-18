@@ -21,91 +21,6 @@ extern "C" {
 }
 #include <wifi_manager.h>
 
-// Fingerprint events
-enum class FingerprintEvent {
-    FingerDetected,
-    MatchFound,
-    MatchNotFound,
-    Error
-};
-
-// Fingerprint sensor class
-class AS608Sensor {
-public:
-    static AS608Sensor& GetInstance();
-
-    bool Initialize(const as608_config_t& config);
-    bool IsInitialized() const;
-
-    esp_err_t ReadImage();
-    esp_err_t GenChar(int buffer_id);
-    esp_err_t Search(int* match_id, uint16_t* score);
-
-    void SetEventCallback(std::function<void(FingerprintEvent, int, uint16_t)> callback);
-
-    void NotifyEvent(FingerprintEvent event, int id = -1, uint16_t score = 0);
-
-    AS608Sensor(const AS608Sensor&) = delete;
-    AS608Sensor& operator=(const AS608Sensor&) = delete;
-
-private:
-    AS608Sensor();
-    ~AS608Sensor();
-
-    bool initialized_ = false;
-    std::function<void(FingerprintEvent, int, uint16_t)> event_callback_;
-};
-
-AS608Sensor& AS608Sensor::GetInstance() {
-    static AS608Sensor instance;
-    return instance;
-}
-
-AS608Sensor::AS608Sensor() {}
-
-AS608Sensor::~AS608Sensor() {
-    if (initialized_) {
-        as608_deinit();
-    }
-}
-
-bool AS608Sensor::Initialize(const as608_config_t& config) {
-    if (initialized_) return true;
-    
-    esp_err_t ret = as608_init(&config);
-    if (ret == ESP_OK) {
-        initialized_ = true;
-        return true;
-    }
-    return false;
-}
-
-bool AS608Sensor::IsInitialized() const {
-    return initialized_;
-}
-
-esp_err_t AS608Sensor::ReadImage() {
-    return as608_read_image();
-}
-
-esp_err_t AS608Sensor::GenChar(int buffer_id) {
-    return as608_gen_char(buffer_id);
-}
-
-esp_err_t AS608Sensor::Search(int* match_id, uint16_t* score) {
-    return as608_search(match_id, score);
-}
-
-void AS608Sensor::SetEventCallback(std::function<void(FingerprintEvent, int, uint16_t)> callback) {
-    event_callback_ = callback;
-}
-
-void AS608Sensor::NotifyEvent(FingerprintEvent event, int id, uint16_t score) {
-    if (event_callback_) {
-        event_callback_(event, id, score);
-    }
-}
-
 static const char *TAG = "MAIN";
 
 static void button_event_handler(void* arg, esp_event_base_t event_base,
@@ -126,39 +41,19 @@ void fingerprint_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "Fingerprint detection task started");
 
-    auto& sensor = AS608Sensor::GetInstance();
-    sensor.SetEventCallback([](FingerprintEvent event, int id, uint16_t score) {
-        switch (event) {
-            case FingerprintEvent::FingerDetected:
-                ESP_LOGI(TAG, "Finger detected via callback");
-                break;
-            case FingerprintEvent::MatchFound:
-                ESP_LOGI(TAG, "Fingerprint matched via callback! ID: %d, Score: %d", id, score);
-                break;
-            case FingerprintEvent::MatchNotFound:
-                ESP_LOGW(TAG, "Fingerprint not found via callback");
-                break;
-            case FingerprintEvent::Error:
-                ESP_LOGE(TAG, "Fingerprint error via callback");
-                break;
-        }
-    });
-
     while (1)
     {
         // Check for finger
-        esp_err_t ret = sensor.ReadImage();
+        esp_err_t ret = as608_read_image();
         if (ret == ESP_OK)
         {
-            sensor.NotifyEvent(FingerprintEvent::FingerDetected);
             ESP_LOGI(TAG, "Finger detected, processing...");
 
             // Generate character file
-            ret = sensor.GenChar(1);
+            ret = as608_gen_char(1);
             if (ret != ESP_OK)
             {
                 ESP_LOGE(TAG, "Failed to generate character file: %s", esp_err_to_name(ret));
-                sensor.NotifyEvent(FingerprintEvent::Error);
                 vTaskDelay(pdMS_TO_TICKS(2000));
                 continue;
             }
@@ -166,20 +61,18 @@ void fingerprint_task(void *pvParameters)
             // Search in library
             int match_id = -1;
             uint16_t score = 0;
-            ret = sensor.Search(&match_id, &score);
+            ret = as608_search(&match_id, &score);
             if (ret == ESP_OK)
             {
-                sensor.NotifyEvent(FingerprintEvent::MatchFound, match_id, score);
                 ESP_LOGI(TAG, "Fingerprint matched! ID: %d, Score: %d", match_id, score);
+                // TODO: Handle successful match (e.g., unlock door, log event)
             }
             else if (ret == ESP_ERR_NOT_FOUND)
             {
-                sensor.NotifyEvent(FingerprintEvent::MatchNotFound);
                 ESP_LOGW(TAG, "Fingerprint not found in library");
             }
             else
             {
-                sensor.NotifyEvent(FingerprintEvent::Error);
                 ESP_LOGE(TAG, "Search failed: %s", esp_err_to_name(ret));
             }
 
@@ -193,7 +86,6 @@ void fingerprint_task(void *pvParameters)
         }
         else
         {
-            sensor.NotifyEvent(FingerprintEvent::Error);
             ESP_LOGE(TAG, "Read image failed: %s", esp_err_to_name(ret));
             vTaskDelay(pdMS_TO_TICKS(1000));
         }
@@ -255,16 +147,16 @@ extern "C" void app_main(void)
     }
 
     /* Initialize AS608 fingerprint sensor */
-    auto& sensor = AS608Sensor::GetInstance();
     as608_config_t as608_cfg = {
         .uart_num = CFG_AS608_UART_PORT,
         .tx_pin = CFG_AS608_TX_GPIO,
         .rx_pin = CFG_AS608_RX_GPIO,
         .baudrate = CFG_AS608_BAUD_RATE
     };
-    if (!sensor.Initialize(as608_cfg))
+    ret = as608_init(&as608_cfg);
+    if (ret != ESP_OK)
     {
-        ESP_LOGE(TAG, "AS608 init failed");
+        ESP_LOGE(TAG, "AS608 init failed: %s", esp_err_to_name(ret));
     }
     else
     {

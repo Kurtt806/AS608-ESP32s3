@@ -75,4 +75,11 @@ esp_err_t as608_get_template_count(uint16_t *count);
  */
 esp_err_t as608_handshake(void);
 
+/**
+ * @brief Enroll a fingerprint (capture two images and create template)
+ * @param id Location ID to store the template (0-based)
+ * @return ESP_OK on success
+ */
+esp_err_t as608_enroll(int id);
+
 #endif // AS608_H
