@@ -4,7 +4,6 @@
  * @author KH OA
  */
 
-#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
@@ -13,10 +12,6 @@
 #include "esp_event.h"
 
 #include "settings/settings.h"
-#include "app/app.h"
-#include "webserver/webserver.h"
-#include "finger/finger_meta.h"
-#include "ota/ota.h"
 
 static const char *TAG = "MAIN";
 
@@ -29,7 +24,6 @@ void app_main(void)
 
     // Bỏ ghi chú dòng bên dưới để tắt tất cả nhật ký ESP
     //  esp_log_level_set("*", ESP_LOG_NONE);
-    esp_log_level_set("AUDIO", ESP_LOG_NONE);
 
     /*Create default event loop */
     ESP_ERROR_CHECK(esp_event_loop_create_default());
@@ -55,32 +49,6 @@ void app_main(void)
         settings_dump(); /* Debug: print current settings */
     }
 
-    /* Initialize fingerprint metadata storage */
-    ret = finger_meta_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));
-    }
 
-    /* Initialize OTA module */
-    ret = ota_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "OTA init failed: %s", esp_err_to_name(ret));
-    }
 
-    /* Initialize and start application */
-    ret = app_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "App init failed: %s", esp_err_to_name(ret));
-        return;
-    }
-
-    app_start();
-
-    /* Initialize web server */
-    webserver_init();
-    /* Start web server after app is running */
-    webserver_start();
 }

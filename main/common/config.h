@@ -26,11 +26,11 @@
 /* ============================================================================
  * Finger Module Timing
  * ============================================================================ */
-#define CFG_FINGER_TASK_STACK       4096
+#define CFG_FINGER_TASK_STACK       3072
 #define CFG_FINGER_TASK_PRIORITY    5
 #define CFG_FINGER_QUEUE_SIZE       8
-#define CFG_FINGER_SCAN_INTERVAL_MS 500
-#define CFG_FINGER_SCAN_FAST_MS     150
+#define CFG_FINGER_SCAN_INTERVAL_MS 1000
+#define CFG_FINGER_SCAN_FAST_MS     300
 #define CFG_FINGER_IDLE_THRESHOLD   3
 
 /* ============================================================================
@@ -46,7 +46,7 @@
 #define CFG_I2S_WS                  GPIO_NUM_7
 #define CFG_I2S_BCK                 GPIO_NUM_6
 #define CFG_I2S_DATA                GPIO_NUM_5
-#define CFG_AUDIO_TASK_STACK        16384
+#define CFG_AUDIO_TASK_STACK        12288
 #define CFG_AUDIO_TASK_PRIORITY     3
 #define CFG_AUDIO_QUEUE_SIZE        8
 #define CFG_AUDIO_DEFAULT_VOLUME    10

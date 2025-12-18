@@ -26,6 +26,8 @@ typedef enum {
     BUTTON_EVT_LONG_PRESS,
     BUTTON_EVT_PRESS_DOWN,
     BUTTON_EVT_PRESS_UP,
+
+    BUTTON_EVT_MAX
 } button_event_id_t;
 
 /* ============================================================================
