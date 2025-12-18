@@ -1,3 +1,10 @@
-idf_component_register(SRCS "as608.c" "as608_protocol.c"
-                       INCLUDE_DIRS "."
-                       REQUIRES driver esp_timer)
+idf_component_register(
+    SRCS
+        "as608_sensor.cpp"
+        "as608_manager.cpp"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        driver
+        esp_timer
+)

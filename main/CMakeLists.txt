@@ -1,7 +1,7 @@
 idf_component_register(
     SRCS 
         "main.cpp"
-        "button/button.c"
+        "button/button.cpp"
         "settings/settings.c"
     INCLUDE_DIRS 
         "."
@@ -9,7 +9,7 @@ idf_component_register(
         "button"
         "settings"
     REQUIRES 
-        as608 
+        as608
         nvs_flash 
         esp_event
         espressif__button

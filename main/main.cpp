@@ -15,42 +15,27 @@
 #include "settings/settings.h"
 #include "common/config.h"
 #include "button/button.h"
-#include "button/button_events.h"
-extern "C" {
-#include "as608.h"
-}
+#include "as608_manager.h"
 #include <wifi_manager.h>
 
 static const char *TAG = "MAIN";
-
-static void button_event_handler(void* arg, esp_event_base_t event_base,
-                                int32_t event_id, void* event_data)
-{
-    btn_event_data_t* data = (btn_event_data_t*) event_data;
-    ESP_LOGI(TAG, "Button event: %d for button %d", (int)event_id, data->btn_id);
-
-    if (event_id == BUTTON_EVT_LONG_PRESS && data->btn_id == BTN_ID_BOOT)
-    {
-        ESP_LOGI(TAG, "Entering WiFi configuration mode...");
-        auto& wifi = WifiManager::GetInstance();
-        wifi.StartConfigAp();
-    }
-}
 
 void fingerprint_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "Fingerprint detection task started");
 
+    auto& as608 = AS608Manager::GetInstance();
+
     while (1)
     {
         // Check for finger
-        esp_err_t ret = as608_read_image();
+        esp_err_t ret = as608.ReadImage();
         if (ret == ESP_OK)
         {
             ESP_LOGI(TAG, "Finger detected, processing...");
 
             // Generate character file
-            ret = as608_gen_char(1);
+            ret = as608.GenerateCharacter(1);
             if (ret != ESP_OK)
             {
                 ESP_LOGE(TAG, "Failed to generate character file: %s", esp_err_to_name(ret));
@@ -61,7 +46,7 @@ void fingerprint_task(void *pvParameters)
             // Search in library
             int match_id = -1;
             uint16_t score = 0;
-            ret = as608_search(&match_id, &score);
+            ret = as608.SearchTemplate(&match_id, &score);
             if (ret == ESP_OK)
             {
                 ESP_LOGI(TAG, "Fingerprint matched! ID: %d, Score: %d", match_id, score);
@@ -92,10 +77,28 @@ void fingerprint_task(void *pvParameters)
     }
 }
 
-void fingerprint_read(void)
-{
-    // This function is now unused, but kept for compatibility
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 extern "C" void app_main(void)
 {
@@ -128,41 +131,6 @@ extern "C" void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    /* Initialize button */
-    ret = button_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "Button init failed: %s", esp_err_to_name(ret));
-    }
-    else
-    {
-        ESP_LOGI(TAG, "Button initialized successfully");
-    }
-
-    /* Register button event handler */
-    ret = esp_event_handler_register(BUTTON_EVENT, ESP_EVENT_ANY_ID, button_event_handler, NULL);
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "Failed to register button event handler: %s", esp_err_to_name(ret));
-    }
-
-    /* Initialize AS608 fingerprint sensor */
-    as608_config_t as608_cfg = {
-        .uart_num = CFG_AS608_UART_PORT,
-        .tx_pin = CFG_AS608_TX_GPIO,
-        .rx_pin = CFG_AS608_RX_GPIO,
-        .baudrate = CFG_AS608_BAUD_RATE
-    };
-    ret = as608_init(&as608_cfg);
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "AS608 init failed: %s", esp_err_to_name(ret));
-    }
-    else
-    {
-        ESP_LOGI(TAG, "AS608 initialized successfully");
-    }
-
     /* Initialize WiFi Manager */
     auto& wifi = WifiManager::GetInstance();
     WifiManagerConfig wifi_config;
@@ -172,9 +140,49 @@ extern "C" void app_main(void)
     {
         ESP_LOGE(TAG, "WiFi Manager init failed");
     }
+
+    /* Set WiFi event callback to auto-connect after config */
+    wifi.SetEventCallback([](WifiEvent event) {
+        if (event == WifiEvent::ConfigModeExit) {
+            ESP_LOGI(TAG, "Config mode exited, starting station mode");
+            auto& wifi = WifiManager::GetInstance();
+            wifi.StartStation();
+        }
+    });
+
+    /* Initialize button */
+    ret = ButtonManager::GetInstance().Initialize();
+    if (ret != ESP_OK)
+    {
+        ESP_LOGE(TAG, "ButtonManager init failed: %s", esp_err_to_name(ret));
+    }
     else
     {
-        ESP_LOGI(TAG, "WiFi Manager initialized successfully");
+        ESP_LOGI(TAG, "ButtonManager initialized successfully");
+    }
+
+    /* Set button event callback */
+    ButtonManager::GetInstance().SetEventCallback([](ButtonEvent event, button_id_t id) {
+        ESP_LOGI(TAG, "Button event: %d for button %d", static_cast<int>(event), id);
+        if (event == ButtonEvent::LongPress && id == BTN_ID_BOOT) {
+            ESP_LOGI(TAG, "Entering WiFi configuration mode...");
+            auto& wifi = WifiManager::GetInstance();
+            wifi.StartConfigAp();
+        }
+    });
+
+    /* Initialize AS608 fingerprint sensor */
+    auto& as608 = AS608Manager::GetInstance();
+    AS608Config as608_cfg = {
+        .uart_num = CFG_AS608_UART_PORT,
+        .tx_pin = CFG_AS608_TX_GPIO,
+        .rx_pin = CFG_AS608_RX_GPIO,
+        .baudrate = CFG_AS608_BAUD_RATE
+    };
+    ret = as608.Initialize(as608_cfg);
+    if (ret != ESP_OK)
+    {
+        ESP_LOGE(TAG, "AS608 init failed: %s", esp_err_to_name(ret));
     }
 
     /* Start fingerprint detection task */
