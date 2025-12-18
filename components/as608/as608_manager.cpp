@@ -120,7 +120,7 @@ esp_err_t AS608Manager::ReadImage() {
         return ESP_ERR_INVALID_STATE;
     }
 
-    ESP_LOGI(TAG, "Reading image...");
+    // ESP_LOGI(TAG, "Reading image...");
 
     // Simple command: PS_GetImage
     uint8_t cmd[] = {0xEF, 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x00, 0x03, 0x01, 0x00, 0x05};
@@ -141,8 +141,8 @@ esp_err_t AS608Manager::ReadImage() {
         ESP_LOGI(TAG, "Image read successfully");
         return ESP_OK;
     } else {
-        ESP_LOGW(TAG, "Image read failed, code: 0x%02X", response[9]);
-        ESP_LOG_BUFFER_HEX(TAG, response, received_len);
+        // ESP_LOGW(TAG, "Image read failed, code: 0x%02X", response[9]);
+        // ESP_LOG_BUFFER_HEX(TAG, response, received_len);
         if (response[9] == 0x02) {
             return ESP_ERR_NOT_FOUND;  // No finger
         } else {

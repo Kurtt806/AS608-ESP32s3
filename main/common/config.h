@@ -37,6 +37,7 @@
  * Button Configuration
  * ============================================================================ */
 #define CFG_BTN_BOOT_GPIO           GPIO_NUM_8
+#define CFG_BTN_ACTIVE              0
 #define CFG_BTN_LONG_PRESS_MS       5000
 #define CFG_BTN_SHORT_PRESS_MS      180
 

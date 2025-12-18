@@ -1,12 +1,10 @@
 idf_component_register(
     SRCS 
         "main.cpp"
-        "button/button.cpp"
         "settings/settings.c"
     INCLUDE_DIRS 
         "."
         "common"
-        "button"
         "settings"
     REQUIRES 
         as608
