@@ -4,14 +4,13 @@ Dự án hệ thống bảo mật vân tay sử dụng cảm biến AS608 trên 
 
 ## Mô tả
 
-Đây là một hệ thống quản lý vân tay tích hợp với ESP32-S3, cho phép đăng ký, so khớp và xóa vân tay thông qua giao diện web. Dự án bao gồm các tính năng như WiFi, webserver, cập nhật OTA, và phản hồi âm thanh.
+Đây là một hệ thống quản lý vân tay tích hợp với ESP32-S3, cho phép đăng ký, so khớp và xóa vân tay. Dự án bao gồm các tính năng như WiFi và phản hồi âm thanh.
 
 ## Tính năng chính
 
 - **Quản lý vân tay**: Đăng ký, so khớp, xóa vân tay
 - **Giao diện web**: Cấu hình và quản lý qua trình duyệt
 - **WiFi**: Kết nối mạng không dây
-- **OTA (Over-The-Air)**: Cập nhật firmware từ xa
 - **Phản hồi âm thanh**: Thông báo trạng thái qua loa
 - **Lưu trữ NVS**: Lưu trữ cài đặt và metadata vân tay
 
@@ -70,9 +69,7 @@ python tools/export_firmware.py
 - `main/`: Code chính của ứng dụng
   - `app/`: Logic điều khiển chính
   - `finger/`: Quản lý cảm biến vân tay
-  - `webserver/`: Máy chủ web
   - `wifi/`: Quản lý WiFi
-  - `ota/`: Cập nhật OTA
   - `settings/`: Quản lý cài đặt
   - `common/`: Các tiện ích chung
 - `components/`: Các component tùy chỉnh

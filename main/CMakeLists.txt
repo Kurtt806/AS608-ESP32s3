@@ -1,12 +1,3 @@
-# Web assets - includes new ws.js and api.js
-set(WEB_ASSETS
-    "webserver/assets/index.html"
-    "webserver/assets/style.css"
-    "webserver/assets/app.js"
-    "webserver/assets/ws.js"
-    "webserver/assets/api.js"
-)
-
 idf_component_register(
     SRCS 
         "main.c"
@@ -15,9 +6,7 @@ idf_component_register(
         "finger/finger_meta.c"
         "button/button.c"
         "wifi/wifi.cc"
-        "webserver/webserver.c"
         "settings/settings.c"
-        "ota/ota.c"
     INCLUDE_DIRS 
         "."
         "common"
@@ -25,9 +14,7 @@ idf_component_register(
         "finger"
         "button"
         "wifi"
-        "webserver"
         "settings"
-        "ota"
     REQUIRES 
         as608 
         nvs_flash 
@@ -36,10 +23,5 @@ idf_component_register(
         driver
         esp_adc
         khoa_esp_wifi
-        esp_http_server
-        json
-        app_update
-        esp_https_ota
         khoa_audio
-    EMBED_FILES ${WEB_ASSETS}
 )

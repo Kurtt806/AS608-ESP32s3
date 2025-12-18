@@ -26,7 +26,6 @@ FILES_TO_EXPORT = [
     ("AS608-ESP32s3.bin", "firmware.bin"),           # Main firmware
     ("bootloader/bootloader.bin", "bootloader.bin"), # Bootloader
     ("partition_table/partition-table.bin", "partition-table.bin"),  # Partition table
-    ("ota_data_initial.bin", "ota_data_initial.bin"),  # OTA data (if exists)
 ]
 
 def get_version():
@@ -85,15 +84,6 @@ def export_firmware():
         else:
             print(f"  ✗ {src_name:30} (not found)")
     
-    # Also copy combined binary for easy flashing
-    combined_bin = BUILD_DIR / "AS608-ESP32s3.bin"
-    if combined_bin.exists():
-        # Copy as single OTA update file
-        ota_file = release_folder / f"ota_update_v{version}.bin"
-        shutil.copy2(combined_bin, ota_file)
-        size_kb = ota_file.stat().st_size / 1024
-        print(f"\n  ✓ OTA Update file: ota_update_v{version}.bin ({size_kb:.1f} KB)")
-    
     # Create flash info file
     flash_info = release_folder / "flash_info.txt"
     with open(flash_info, 'w') as f:
@@ -111,8 +101,6 @@ def export_firmware():
         f.write(f"    0x0 bootloader_v{version}.bin\n")
         f.write(f"    0x8000 partition-table_v{version}.bin\n")
         f.write(f"    0x20000 firmware_v{version}.bin\n\n")
-        f.write(f"OTA Update (via web interface):\n")
-        f.write(f"  Upload: ota_update_v{version}.bin\n")
     
     print(f"\n  ✓ Flash info: flash_info.txt")
     

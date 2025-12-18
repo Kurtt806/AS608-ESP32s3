@@ -12,11 +12,11 @@
 #include "nvs_flash.h"
 #include "esp_event.h"
 
+
+
 #include "settings/settings.h"
 #include "app/app.h"
-#include "webserver/webserver.h"
 #include "finger/finger_meta.h"
-#include "ota/ota.h"
 
 static const char *TAG = "MAIN";
 
@@ -62,13 +62,6 @@ void app_main(void)
         ESP_LOGE(TAG, "Finger meta init failed: %s", esp_err_to_name(ret));
     }
 
-    /* Initialize OTA module */
-    ret = ota_init();
-    if (ret != ESP_OK)
-    {
-        ESP_LOGE(TAG, "OTA init failed: %s", esp_err_to_name(ret));
-    }
-
     /* Initialize and start application */
     ret = app_init();
     if (ret != ESP_OK)
@@ -78,9 +71,4 @@ void app_main(void)
     }
 
     app_start();
-
-    /* Initialize web server */
-    webserver_init();
-    /* Start web server after app is running */
-    webserver_start();
 }
