@@ -20,3 +20,13 @@ idf.py app; idf.py app-flash monitor
 
 # xuất rel
 python D:\ESP-IDF\AS608-ESP32s3\tools\export_firmware.py
+
+
+# prompt:
+LƯU Ý:
+- cấu hình trong config.h là đúng
+- không chỉnh sửa common
+
+NHIỆM VỤ:
+- kiểm tra mã về as608
+- chuẩn hoá theo kiểu c++ giống auto &as608 = AS608Manager::GetInstance();

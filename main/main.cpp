@@ -24,10 +24,19 @@ void fingerprint_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "Fingerprint detection task started");
 
-    auto& as608 = AS608Manager::GetInstance();
+    auto &as608 = AS608Manager::GetInstance();
+
+    static bool first_loop = true;
+    bool enrolling = false;
+    int enroll_id = 0;
 
     while (1)
     {
+        if (first_loop) {
+            ESP_LOGI(TAG, "Fingerprint task loop started");
+            first_loop = false;
+        }
+
         // Check for finger
         esp_err_t ret = as608.ReadImage();
         if (ret == ESP_OK)
@@ -39,26 +48,77 @@ void fingerprint_task(void *pvParameters)
             if (ret != ESP_OK)
             {
                 ESP_LOGE(TAG, "Failed to generate character file: %s", esp_err_to_name(ret));
+                enrolling = false;
                 vTaskDelay(pdMS_TO_TICKS(2000));
                 continue;
             }
 
-            // Search in library
-            int match_id = -1;
-            uint16_t score = 0;
-            ret = as608.SearchTemplate(&match_id, &score);
-            if (ret == ESP_OK)
+            if (!enrolling)
             {
-                ESP_LOGI(TAG, "Fingerprint matched! ID: %d, Score: %d", match_id, score);
-                // TODO: Handle successful match (e.g., unlock door, log event)
-            }
-            else if (ret == ESP_ERR_NOT_FOUND)
-            {
-                ESP_LOGW(TAG, "Fingerprint not found in library");
+                // Search in library
+                int match_id = -1;
+                uint16_t score = 0;
+                ret = as608.SearchTemplate(&match_id, &score);
+                if (ret == ESP_OK)
+                {
+                    ESP_LOGI(TAG, "Fingerprint matched! ID: %d, Score: %d", match_id, score);
+                    // TODO: Handle successful match (e.g., unlock door, log event)
+                }
+                else if (ret == ESP_ERR_NOT_FOUND)
+                {
+                    ESP_LOGW(TAG, "Fingerprint not found in library, starting auto-enrollment");
+
+                    // Get next available ID
+                    uint16_t count = 0;
+                    as608.GetTemplateCount(&count);
+                    enroll_id = count + 1;
+
+                    enrolling = true;
+                    ESP_LOGI(TAG, "Auto-enrollment started for ID %d. Place finger again.", enroll_id);
+
+                    // Wait for second placement
+                    vTaskDelay(pdMS_TO_TICKS(3000));
+                    continue; // Skip delay, check again immediately
+                }
+                else
+                {
+                    ESP_LOGE(TAG, "Search failed: %s", esp_err_to_name(ret));
+                }
             }
             else
             {
-                ESP_LOGE(TAG, "Search failed: %s", esp_err_to_name(ret));
+                // Second scan for enrollment
+                ESP_LOGI(TAG, "Second scan for enrollment ID %d", enroll_id);
+
+                ret = as608.GenerateCharacter(2);
+                if (ret != ESP_OK)
+                {
+                    ESP_LOGE(TAG, "Failed to generate character file 2: %s", esp_err_to_name(ret));
+                    enrolling = false;
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                    continue;
+                }
+
+                ret = as608.RegisterModel();
+                if (ret != ESP_OK)
+                {
+                    ESP_LOGE(TAG, "Failed to register model: %s", esp_err_to_name(ret));
+                    enrolling = false;
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                    continue;
+                }
+
+                ret = as608.StoreTemplate(enroll_id);
+                if (ret != ESP_OK)
+                {
+                    ESP_LOGE(TAG, "Failed to store template: %s", esp_err_to_name(ret));
+                    enrolling = false;
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                    continue;
+                }
+
+                ESP_LOGI(TAG, "Auto-enrollment completed successfully for ID %d", enroll_id);
+                enrolling = false;
             }
 
             // Delay after processing to avoid multiple detections
@@ -72,33 +132,11 @@ void fingerprint_task(void *pvParameters)
         else
         {
             ESP_LOGE(TAG, "Read image failed: %s", esp_err_to_name(ret));
+            enrolling = false;
             vTaskDelay(pdMS_TO_TICKS(1000));
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 extern "C" void app_main(void)
 {
@@ -132,7 +170,7 @@ extern "C" void app_main(void)
     ESP_ERROR_CHECK(ret);
 
     /* Initialize WiFi Manager */
-    auto& wifi = WifiManager::GetInstance();
+    auto &wifi = WifiManager::GetInstance();
     WifiManagerConfig wifi_config;
     wifi_config.ssid_prefix = "AS608-FP";
     wifi_config.language = "vi";
@@ -142,13 +180,13 @@ extern "C" void app_main(void)
     }
 
     /* Set WiFi event callback to auto-connect after config */
-    wifi.SetEventCallback([](WifiEvent event) {
+    wifi.SetEventCallback([](WifiEvent event)
+                          {
         if (event == WifiEvent::ConfigModeExit) {
             ESP_LOGI(TAG, "Config mode exited, starting station mode");
-            auto& wifi = WifiManager::GetInstance();
+            auto &wifi = WifiManager::GetInstance();
             wifi.StartStation();
-        }
-    });
+        } });
 
     /* Initialize button */
     ret = ButtonManager::GetInstance().Initialize();
@@ -161,24 +199,13 @@ extern "C" void app_main(void)
         ESP_LOGI(TAG, "ButtonManager initialized successfully");
     }
 
-    /* Set button event callback */
-    ButtonManager::GetInstance().SetEventCallback([](ButtonEvent event, button_id_t id) {
-        ESP_LOGI(TAG, "Button event: %d for button %d", static_cast<int>(event), id);
-        if (event == ButtonEvent::LongPress && id == BTN_ID_BOOT) {
-            ESP_LOGI(TAG, "Entering WiFi configuration mode...");
-            auto& wifi = WifiManager::GetInstance();
-            wifi.StartConfigAp();
-        }
-    });
-
     /* Initialize AS608 fingerprint sensor */
-    auto& as608 = AS608Manager::GetInstance();
+    auto &as608 = AS608Manager::GetInstance();
     AS608Config as608_cfg = {
         .uart_num = CFG_AS608_UART_PORT,
         .tx_pin = CFG_AS608_TX_GPIO,
         .rx_pin = CFG_AS608_RX_GPIO,
-        .baudrate = CFG_AS608_BAUD_RATE
-    };
+        .baudrate = CFG_AS608_BAUD_RATE};
     ret = as608.Initialize(as608_cfg);
     if (ret != ESP_OK)
     {
@@ -186,8 +213,23 @@ extern "C" void app_main(void)
     }
 
     /* Start fingerprint detection task */
-    xTaskCreate(fingerprint_task, "fingerprint_task", 4096, NULL, 5, NULL);
+    BaseType_t task_ret = xTaskCreate(fingerprint_task, "fingerprint_task", 4096, NULL, 5, NULL);
+    if (task_ret == pdPASS)
+    {
+        ESP_LOGI(TAG, "Fingerprint task created successfully");
+    }
+    else
+    {
+        ESP_LOGE(TAG, "Failed to create fingerprint task");
+    }
 
-
-
+    /* Set button event callback */
+    ButtonManager::GetInstance().SetEventCallback([](ButtonEvent event, button_id_t id)
+                                                  {
+        ESP_LOGI(TAG, "Button event: %d for button %d", static_cast<int>(event), id);
+        if (event == ButtonEvent::LongPress && id == BTN_ID_BOOT) {
+            ESP_LOGI(TAG, "Entering WiFi configuration mode...");
+            auto &wifi = WifiManager::GetInstance();
+            wifi.StartConfigAp();
+        } });
 }
